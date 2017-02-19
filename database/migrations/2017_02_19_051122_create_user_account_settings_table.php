@@ -15,7 +15,7 @@ class CreateUserAccountSettingsTable extends Migration
     {
         Schema::create('user_account_settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->unique();
             $table->boolean('email_opt_in')->default(false);
             $table->boolean('sms_opt_in')->default(false);
             $table->boolean('push_opt_in')->default(false);
@@ -28,6 +28,7 @@ class CreateUserAccountSettingsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->index('user_id');
         });
     }
 

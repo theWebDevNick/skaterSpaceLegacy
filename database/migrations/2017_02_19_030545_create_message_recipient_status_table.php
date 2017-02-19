@@ -23,6 +23,8 @@ class CreateMessageRecipientStatusTable extends Migration
             //
             $table->foreign('user')->references('id')->on('users');
             $table->foreign('message')->references('id')->on('messages');
+            $table->index(['message','user']);
+            $table->unique(['message','user']);
         });
     }
 

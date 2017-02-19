@@ -33,6 +33,8 @@ class CreateCoachSkaterRelationshipsTable extends Migration
             $table->foreign('requested_by')->references('id')->on('users');
             $table->foreign('last_updated_by')->references('id')->on('users');
             $table->foreign('permission_set')->references('id')->on('relation_permission_sets');
+            $table->unique(['coach_id','skater_id']);
+            $table->index(['coach_id','skater_id']);
         });
     }
 

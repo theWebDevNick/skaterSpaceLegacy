@@ -24,6 +24,8 @@ class CreateCoachPagesTable extends Migration
             //
             //Foreign key constraints
             $table->foreign('coach_user_id')->references('id')->on('users');
+            $table->index('coach_user_id');
+            $table->index('page_slug');
         });
     }
 

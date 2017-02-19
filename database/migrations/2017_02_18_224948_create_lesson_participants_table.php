@@ -34,6 +34,8 @@ class CreateLessonParticipantsTable extends Migration
             $table->foreign('last_update_by')->references('id')->on('users');
             $table->foreign('attendance_verified_by')->references('id')->on('users');
             $table->foreign('lesson')->references('id')->on('lessons');
+            $table->index(['lesson','participant']);
+            $table->unique(['lesson','participant']);
         });
     }
 

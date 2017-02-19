@@ -24,6 +24,7 @@ class CreatePersonalPracticesTable extends Migration
             //
             //
             $table->foreign('skater_id')->references('id')->on('users');
+            $table->index('skater_id');
         });
     }
 

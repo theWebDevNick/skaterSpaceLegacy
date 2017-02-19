@@ -27,6 +27,8 @@ class CreateSkaterCredentialsTable extends Migration
             //
             $table->foreign('credential_id')->references('id')->on('skating_credentials');
             $table->foreign('skater_id')->references('id')->on('users');
+            $table->unique(['credential_id','skater_id']);
+
         });
     }
 

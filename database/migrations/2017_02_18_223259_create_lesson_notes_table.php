@@ -30,6 +30,7 @@ class CreateLessonNotesTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->foreign('for_lesson')->references('id')->on('lessons');
             $table->foreign('spawned_thread')->references('id')->on('message_threads');
+            $table->index('for_lesson');
 
         });
     }

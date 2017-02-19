@@ -24,6 +24,8 @@ class CreateSkaterCompletedSkillsTable extends Migration
             $table->foreign('skill_id')->references('id')->on('skating_skills');
             $table->foreign('skater_id')->references('id')->on('users');
             $table->foreign('verified_by')->references('id')->on('users');
+            $table->unique(['skater_id','skill_id']);
+            $table->index(['skater_id','skill_id']);
 
         });
 

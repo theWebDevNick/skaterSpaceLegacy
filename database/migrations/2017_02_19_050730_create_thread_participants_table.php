@@ -24,6 +24,8 @@ class CreateThreadParticipantsTable extends Migration
             //
             $table->foreign('thread_id')->references('id')->on('message_threads');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unique(['thread_id','user_id']);
+            $table->index(['thread_id','user_id']);
 
         });
     }

@@ -24,6 +24,7 @@ class CreateMessagesTable extends Migration
             //
             $table->foreign('thread_id')->references('id')->on('message_threads');
             $table->foreign('sent_by')->references('id')->on('users');
+            $table->index('thread_id');
         });
     }
 

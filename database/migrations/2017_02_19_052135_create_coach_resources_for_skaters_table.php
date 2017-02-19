@@ -21,6 +21,8 @@ class CreateCoachResourcesForSkatersTable extends Migration
             $table->boolean('is_public')->default(false);//whether non-students can see
             $table->boolean('is_deleted')->default(false);//
             $table->timestamps();
+            //
+            //
             $table->foreign('added_by_coach')->references('id')->on('users');
         });
 

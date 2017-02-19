@@ -33,6 +33,7 @@ class CreateSkaterWeeklyPracticeGoalsTable extends Migration
             $table->foreign('assigned_to')->references('id')->on('users');
             $table->foreign('goal_discipline_id')->references('id')->on('skating_disciplines');
             $table->foreign('goal_skill_id')->references('id')->on('skating_skills');
+            $table->index('assigned_to');
         });
     }
 
