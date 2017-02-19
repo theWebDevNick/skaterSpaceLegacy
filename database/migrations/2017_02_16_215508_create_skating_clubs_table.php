@@ -31,7 +31,7 @@ class CreateSkatingClubsTable extends Migration
             //
             //Foreign_keys
             $table->foreign('organization_affiliation')->references('id')->on('governing_organizations');
-            $table->foreign('club_admin')->references('id')->on('users');
+            //table->foreign('club_admin')->references('id')->on('users');
 
         });
     }

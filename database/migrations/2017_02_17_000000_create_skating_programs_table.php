@@ -18,10 +18,10 @@ class CreateSkatingProgramsTable extends Migration
             $table->string('name')->unique();
             $table->unsignedInteger('administered_by')->nullable();//governing organization
             $table->unsignedInteger('discipline_id')->nullable();
-            $table->boolean('is_coaching_track')->default('false');
-            $table->boolean('is_test_track')->default('false');
-            $table->boolean('is_introduction_track')->default('false');//like Learn to Skate
-            $table->boolean('is_active')->default('true');//l
+            $table->boolean('is_coaching_track')->default(false);
+            $table->boolean('is_test_track')->default(false);
+            $table->boolean('is_introduction_track')->default(false);//like Learn to Skate
+            $table->boolean('is_active')->default(true);//l
             $table->timestamps();
             //
             //

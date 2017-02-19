@@ -14,7 +14,7 @@ class CreateMessageRecipientStatusTable extends Migration
     public function up()
     {
         //
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('message_recipient_status', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('message');
             $table->unsignedInteger('user');

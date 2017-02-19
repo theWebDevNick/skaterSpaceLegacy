@@ -20,9 +20,9 @@ class CreateSkatingCredentialsTable extends Migration
             $table->unsignedInteger('program_id')->nullable();
             $table->unsignedInteger('discipline_id')->nullable();
             $table->unsignedInteger('granting_org')->nullable();
-            $table->boolean('require_skills_completion')->default('true');
-            $table->boolean('expires')->default('false');
-            $table->boolean('is_active')->default('true');
+            $table->boolean('require_skills_completion')->default(true);
+            $table->boolean('expires')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             //
             $table->foreign('skating_level')->references('id')->on('skating_levels');

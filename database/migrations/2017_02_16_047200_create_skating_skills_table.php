@@ -16,7 +16,7 @@ class CreateSkatingSkillsTable extends Migration
         Schema::create('skating_skills', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('skill_category_id');
+            $table->unsignedInteger('skill_category_id');
             $table->date('completion_date');
             $table->smallInteger('point_value')->nullable();//for achievements calculations
             $table->string('resource_url')->nullable();//like a test diagram
