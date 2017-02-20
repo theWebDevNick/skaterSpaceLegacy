@@ -17,7 +17,6 @@ class CreateSkatingSkillsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->unsignedInteger('skill_category_id');
-            $table->date('completion_date');
             $table->smallInteger('point_value')->nullable();//for achievements calculations
             $table->string('resource_url')->nullable();//like a test diagram
             $table->timestamps();

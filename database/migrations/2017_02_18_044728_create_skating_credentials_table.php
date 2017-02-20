@@ -18,7 +18,6 @@ class CreateSkatingCredentialsTable extends Migration
             $table->string('name')->unique;
             $table->unsignedInteger('skating_level')->nullable();
             $table->unsignedInteger('program_id')->nullable();
-            $table->unsignedInteger('discipline_id')->nullable();
             $table->unsignedInteger('granting_org')->nullable();
             $table->boolean('require_skills_completion')->default(true);
             $table->boolean('expires')->default(false);
@@ -27,7 +26,6 @@ class CreateSkatingCredentialsTable extends Migration
             //
             $table->foreign('skating_level')->references('id')->on('skating_levels');
             $table->foreign('program_id')->references('id')->on('skating_programs');
-            $table->foreign('discipline_id')->references('id')->on('skating_disciplines');
             $table->foreign('granting_org')->references('id')->on('governing_organizations');
 
         });
