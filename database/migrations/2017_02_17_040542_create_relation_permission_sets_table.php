@@ -22,7 +22,7 @@ class CreateRelationPermissionSetsTable extends Migration
             $table->boolean('lesson_scheduling_requires_approval')->default(false);
             $table->boolean('can_schedule_tests')->default(false);
             $table->boolean('can_schedule_competitions')->default(false);
-            $table->boolean('can_canel_other_lessons')->default(false);
+            $table->boolean('can_cancel_other_lessons')->default(false);
             $table->boolean('can_view_skater_lesson_notes')->default(false);
             $table->boolean('can_supervise_test')->default(false);
             $table->boolean('can_supervise_competitions')->default(false);

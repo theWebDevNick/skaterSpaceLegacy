@@ -21,7 +21,7 @@ class CreateSkatingProgramsTable extends Migration
             $table->boolean('is_coaching_track')->default(false);
             $table->boolean('is_test_track')->default(false);
             $table->boolean('is_introduction_track')->default(false);//like Learn to Skate
-            $table->boolean('is_active')->default(true);//l
+            $table->boolean('is_active')->default(true);//
             $table->timestamps();
             //
             //
