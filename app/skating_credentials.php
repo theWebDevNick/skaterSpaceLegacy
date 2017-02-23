@@ -23,6 +23,6 @@ class skating_credentials extends Model
     }
     public function grantingOrg()
     {
-        return $this->hasOne(governing_organizations::class,'id','grantingOrg')->select(['id','name']);
+        return $this->hasOne(governing_organizations::class,'id','granting_org')->select(['id','name']);
     }
 }
