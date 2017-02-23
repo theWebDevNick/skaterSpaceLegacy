@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/credentials/{$cred}',function(App\skating_credentials $cred){
+    return $cred;
+});
+
+

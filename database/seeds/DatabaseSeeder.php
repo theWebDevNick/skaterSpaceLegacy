@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SkatingSkillsCategoriesTableSeeder::class);//for dev and deploy
         $this->call(SkatingSkillsTableSeeder::class);//for dev and deploy
         $this->call(userTypesTableSeeder::class);//for dev and deploy
-        $this->call(SkatingProgramsTableSeederTableSeeder::class);//for dev and deploy
+        $this->call(SkatingProgramsTableSeeder::class);//for dev and deploy
         $this->call(SkatingLevelsTableSeeder::class);//for dev and deploy
-        $this->call(SkatingCredentialsTableSeederTableSeeder::class);//for dev and deploy
+        $this->call(SkatingCredentialsTableSeeder::class);//for dev and deploy
+        $this->call(skatingCredentialsSkillsTableSeeder::class);//for dev and deploy
     }
 }

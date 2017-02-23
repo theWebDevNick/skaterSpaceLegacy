@@ -4,14 +4,14 @@
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
-class SkatingProgramsTableSeederTableSeeder extends Seeder {
+class SkatingProgramsTableSeeder extends Seeder {
 
 	public function run()
 	{
         DB::table('skating_programs')->insert([
-            [
+
                 [
-                    'name'=>'Basic Skills',
+                    'name'=>'Learn To Skate',
                     'administered_by'=>1,
                     'discipline_id'=>1,
                     'is_coaching_track'=>false,
@@ -49,7 +49,6 @@ class SkatingProgramsTableSeederTableSeeder extends Seeder {
                     'is_coaching_track'=>false,
                     'is_test_track'=>true,
                     'is_introduction_track'=>false
-                ]
             ]
         ]);
 	}

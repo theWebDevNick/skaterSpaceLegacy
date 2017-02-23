@@ -11,7 +11,9 @@
 |
 */
 use App\skating_credentials;
-
+Route::get('coach/{id}',function(App\coach_pages $coach){
+    return $coach;
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,6 +21,6 @@ Route::get('/credentials',function($id){
     //list all;
 });
 
-Route::get('/credentials/{id}',function($id){
-    return $skillList = skating_credentials::skills($id);
+Route::get('/credentials/{cred}',function(App\skating_credentials $cred){
+    return $cred::with('skills','programId','skatingLevel','grantingOrg')->get();
 });
