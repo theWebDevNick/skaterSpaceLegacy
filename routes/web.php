@@ -11,11 +11,18 @@
 |
 */
 use App\skating_credentials;
-Route::get('coach/{id}',function(App\coach_pages $coach){
-    return $coach;
-});
+
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/app', function () {
+    return view('webApp');
+});
+
+
+
+Route::get('coach/{id}',function(App\coach_pages $coach){
+    return $coach;
 });
 Route::get('/credentials',function($id){
     //list all;

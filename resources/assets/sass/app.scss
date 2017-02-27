@@ -4,6 +4,42 @@
 
 // Variables
 @import "variables";
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+.custom-nav
+{
+  background-color: $primary-blue;
+  color: $off-white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+  .custom-nav ul
+  {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+  .custom-nav li
+  {
+    display: inline-block;
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+  }
+  .custom-nav a
+  {
+    color:$off-white;
+    transition: all 0.3s ease-in;
+  }
+    .custom-nav a:hover
+    {
+      color:$secondary-blue;
+    }
+.primary-nav
+{
+  padding-top: 10px;
+  display: block;
+  width: 100%;
+}
+  .primary-nav li
+  {
+    text-align: center;
+  }
