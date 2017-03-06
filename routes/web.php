@@ -23,7 +23,7 @@ Route::get('/app', function () {
 
 Route::get('coach/{id}',function(App\coach_pages $coach){
     return $coach;
-});
+            });
 Route::get('/credentials',function($id){
     //list all;
 });

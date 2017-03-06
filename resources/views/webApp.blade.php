@@ -23,62 +23,65 @@
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet"  href="/css/app.css">
     </head>
-    <body>
-        <div id="app">
-            <nav class="custom-nav">
-                <div class="container">
-                    <ul class="pull-left">
-                        <li>
-                            <router-link to="/" tag="a" exact>
-                                <i class="fa fa-lg fa-arrow-left"></i>
-                            </router-link>
-                        </li>
-                    </ul>
-                    <ul class="pull-right">
-                        <li>
-                            <router-link to="/messages  " tag="a" exact>
-                                <i class="fa fa-lg fa-envelope"></i>
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link to="/settings  " tag="a" exact>
-                                <i class="fa fa-lg fa-gear"></i>
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link to="/logout  " tag="a" exact>
-                                <i class="fa fa-lg fa-sign-out"></i>
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <nav class="custom-nav">
-                <div class="container">
-                    <ul class="primary-nav">
-                        <li class="col-xs-3">
-                            <router-link to="/home  " tag="a" exact>
-                                <i class="fa fa-2x fa-home"></i>
-                            </router-link>
-                        </li>
-                        <li class="col-xs-3">
-                            <router-link to="/lessons  "tag="a" exact>
-                                <i class="fa fa-2x fa-group"></i>
-                            </router-link>
-                        </li>
-                        <li class="col-xs-3">
-                            <router-link to="/practice  " tag="a" exact>
-                                <i class="fa fa-2x fa-pencil"></i>
-                            </router-link>
-                        </li>
-                        <li class="col-xs-3">
-                            <router-link to="/resources  " tag="a" exact>
-                                <i class="fa fa-2x fa-puzzle-piece"></i>
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <body class="login-page">
+        <div id="app" >
+            <div class="navigation" v-if="['login'].indexOf($route.name) <= -1">
+                <nav class="custom-nav">
+                    <div class="container">
+                        <ul class="pull-left">
+                            <li>
+                                <router-link to="/" tag="a" exact>
+                                    <i class="fa fa-lg fa-arrow-left"></i>
+                                </router-link>
+                            </li>
+                        </ul>
+                        <ul class="pull-right">
+                            <li>
+                                <router-link to="/messages  " tag="a" exact>
+                                    <i class="fa fa-lg fa-envelope"></i>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to="/settings  " tag="a" exact>
+                                    <i class="fa fa-lg fa-gear"></i>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to="/logout  " tag="a" exact>
+                                    <i class="fa fa-lg fa-sign-out"></i>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav class="custom-nav">
+                    <div class="container">
+                        <ul class="primary-nav">
+                            <li class="col-xs-3">
+                                <router-link to="/home  " tag="a" exact>
+                                    HOME
+                                </router-link>
+                            </li>
+                            <li class="col-xs-3">
+                                <router-link to="/lessons  "tag="a" exact>
+                                    COACH
+                                </router-link>
+                            </li>
+                            <li class="col-xs-3">
+                                <router-link to="/practice  " tag="a" exact>
+                                    LOG
+                                </router-link>
+                            </li>
+                            <li class="col-xs-3">
+                                <router-link to="/resources  " tag="a" exact>
+                                    LEARN
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
             <router-view class="container">
 
             </router-view>

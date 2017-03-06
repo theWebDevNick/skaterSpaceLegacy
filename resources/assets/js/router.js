@@ -7,7 +7,12 @@ let routes =
         {
             path: '/',
             component: require('./views/Dashboard')
-        }
+        },
+        {
+            path: '/login',
+            component: require('./views/Login'),
+            name: "login"
+        },
     ];
 
 export default new VueRouter({
