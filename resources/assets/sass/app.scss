@@ -6,41 +6,13 @@
 @import "variables";
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 @import "material";
-.custom-nav
-{
-  background-color: $primary-blue;
-  color: $off-white;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.lpfaded-enter-active, .lpfaded-leave-active
+  {
+  z-index:100000;
+  transition: all .5s ease;
+  opacity:1;
 }
-  .custom-nav ul
-  {
-    list-style-type: none;
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-  }
-  .custom-nav li
-  {
-    display: inline-block;
-
-  }
-  .custom-nav a
-  {
-    color:$off-white;
-    transition: all 0.3s ease-in;
-  }
-    .custom-nav a:hover
-    {
-      color:$secondary-blue;
-    }
-.primary-nav
-{
-  padding-top: 10px;
-  display: block;
-  width: 100%;
+.lpfaded-enter, .lpfaded-leave-to {
+  z-index:100000;
+  opacity: 0;
 }
-  .primary-nav li
-  {
-    text-align: center;
-  }

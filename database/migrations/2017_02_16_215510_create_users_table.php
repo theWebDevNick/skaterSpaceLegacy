@@ -37,11 +37,6 @@ class CreateUsersTable extends Migration
             $table->foreign('master_parent_account')->references('id')->on('users');
             $table->foreign('home_club')->references('id')->on('skating_clubs');
             $table->foreign('user_type')->references('id')->on('user_types');
-
-
-
-
-
         });
     }
 

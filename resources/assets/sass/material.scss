@@ -12,7 +12,7 @@
 
   margin-top: -20px;
   padding: 0;
-  border-right:1px solid #b6e1e1;
+  border-right:1px solid $secondary-blue;
 }
 .side-panel>#side-collapse
 {
@@ -37,7 +37,7 @@
 {
   width:100px;
   display: block;
-  border-bottom: 5px solid #1C4888;
+  border-bottom: 5px solid $bg-blue;
   margin-top: 0;
   padding-top: 0;
 
@@ -66,7 +66,7 @@
 }
 .side-panel h2
 {
-  background-color: #1c4888;
+  background-color: $bg-blue;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left:10px;
@@ -97,70 +97,7 @@
 }
 .side-panel hr
 {
-  border-top-color: #b6e1e1;
-}
-.results-list
-{
-  padding-top: 20px;
-}
-.results-list-item
-{
-  display: block;
-  color:#404040;
-  background-color: white;
-  transition: all 0.2s ease-in-out;
-}
-.results-list-item:hover
-{
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-  0 1px 5px 0 rgba(0, 0, 0, 0.12),
-  0 3px 1px -2px rgba(0, 0, 0, 0.2);
-}
-.results-list-item img
-{
-  max-height: 200px;
-  margin: 0 auto;
-}
-.results-list-item header h2
-{
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1.8rem;
-}
-.results-list-item header p
-{
-  margin: 0;
-}
-.results-list-item>div
-{
-  padding-bottom: 10px;
-  border-bottom:solid 1px #efefef;
-}
-.price
-{
-  color: #5CB85C;
-  font-weight: bold;
-  font-size: 2em;
-}
-.item-description
-{
-  font-size: 0.8em;
-}
-.post-date
-{
-  font-weight: bold;
-  color: #28C0D5;
-}
-.sport-group--selected
-{
-  color: #fff;
-  font-weight: bold;
-  background-color: #b6e1e1;
-  -moz-box-shadow:inset 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-  box-shadow:inset 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+  border-top-color: $secondary-blue;
 }
 .navbar-brand
 {
@@ -180,9 +117,11 @@
 {
   margin-top: -20px;
   padding-top: 10px;
-  background: #070659; /* Old browsers */
-
 }
+  .login-page .view-container
+  {
+    background-color: $bg-blue-2;
+  }
 .login-page h1
 {
   text-align: center;
@@ -198,7 +137,7 @@
 {
   content: "";
   height: 25px;
-  background-color: #1c4888;
+  background-color: $bg-blue;
   width: 100%;
 }
 .page-footer p
@@ -207,68 +146,7 @@
   color:#5e5e5e;
   margin-top:35px;
 }
-.skate-list
-{
-  list-style-type: none;
-  padding-left: 0;
-}
-.skate-list li:before{
-  content: '';
-  display: inline-block;
-  height: 10px;
-  width: 15px;
-  background-image: url('/img/skateLogo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.skate-list li a
-{
-  color:#b6e1e1;
-  transition: all 0.3s;
-}
-.skate-list li a:hover
-{
-  color: #28C0D5;
-  text-decoration: none;
-}
-.btn-nav {
 
-}
-.contact-info
-{
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-.contact-info .material-button
-{
-  width: 100%;
-  max-width: 450px;
-}
-.btn-contact
-{
-  width: 100%;
-  background-color: #28C0D5;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 20px;
-  color:white;
-  font-weight: bold;
-  transition: all 0.3s linear;
-}
-.btn-contact:hover
-{
-  background-color: #1C4888;
-}
-.btn-contact:focus
-{
-  background-color: #1C4888;
-
-}
-.reg-form .row
-{
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
 /*General Form Styling*/
 .material-form{
   padding: 3em 2em 2em 2em;
@@ -322,7 +200,7 @@ input.cash:before
   top: -20px;
   transform: scale(.75); left: -2px;
   /* font-size: 14px; */
-  color: #4a89dc;
+  color: $accent-bg;
 }
 .material-form-input:focus ~ .bar:before, .material-form-input:focus ~ .bar:after
 {
@@ -344,7 +222,7 @@ input.cash:before
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #4a89dc;
+  background: $accent-bg;
   transition: all 0.2s ease;
 }
 
@@ -470,22 +348,22 @@ input.cash:before
 .form-error--show
 {
   border: 1px solid red;
-  background-color: #FFF2EA;
+  background-color: $off-white;
   color: red;
 }
 .accent-bg
 {
-  background-color: #4A89DC;
+  background-color: $accent-bg;
   color:white;
 }
 .accent-bg-1
 {
-  background-color: #4cae4c;
+  background-color: $accent-bg-2;
   color:white;
 }
 .fb-bg
 {
-  background-color: #3b5998;
+  background-color: $accent-facebook;
   color:white;
 }
 .g-recaptcha {
@@ -499,17 +377,17 @@ input.cash:before
 }
 .reg-form h1
 {
-  background-color: #1C4888;
+  background-color: $bg-blue;
   margin:0 -15px 20px -15px;
   font-size: 3rem;
   color: white;
   text-align: center;
   padding: 45px 15px 30px 15px;
-  border-bottom: 10px solid #b6e1e1;
+  border-bottom: 10px solid $secondary-blue;
 }
 .reg-form fieldset:first-of-type
 {
-  border-bottom: 5px solid #b6e1e1;
+  border-bottom: 5px solid $secondary-blue;
 }
 /*Shadow Classes*/
 
@@ -581,14 +459,6 @@ input.cash:before
   transition: all 0.3s;
   overflow-x: visible!important;
 }
-.side-menu form
-{
-  max-height: 100%;
-  overflow-y: scroll;
-  position: relative;
-  z-index: 160;
-
-}
 .side-menu form::-webkit-scrollbar
 {
   max-width:5px;
@@ -599,7 +469,7 @@ input.cash:before
   padding: 0;
   margin: 0;
   color:white;
-  background-color: #28C0D5;
+  background-color: $primary-blue;
 }
 .side-menu-header h2
 {
@@ -659,7 +529,7 @@ input.cash:before
   position: absolute;
   height: 45px;
   width:80px;
-  background-color: #1C4888;
+  background-color: $bg-blue;
   z-index: 150;
   left: 240px;
   top:100px;
@@ -679,7 +549,7 @@ input.cash:before
   margin-top: 0;
   padding-top: 10px;
   font-size: 2rem;
-  color:#28c0d5;
+  color:$primary-blue;
 }
 .vert-center
 {

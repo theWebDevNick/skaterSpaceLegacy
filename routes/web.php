@@ -31,3 +31,7 @@ Route::get('/credentials',function($id){
 Route::get('/credentials/{cred}',function(App\skating_credentials $cred){
     return $cred::with('skills','programId','skatingLevel','grantingOrg')->get();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

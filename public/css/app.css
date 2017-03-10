@@ -7287,7 +7287,7 @@ button.close {
 .divider {
   width: 100px;
   display: block;
-  border-bottom: 5px solid #1C4888;
+  border-bottom: 5px solid #1c4888;
   margin-top: 0;
   padding-top: 0;
 }
@@ -7349,66 +7349,6 @@ button.close {
   border-top-color: #b6e1e1;
 }
 
-.results-list {
-  padding-top: 20px;
-}
-
-.results-list-item {
-  display: block;
-  color: #404040;
-  background-color: white;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
-
-.results-list-item:hover {
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-}
-
-.results-list-item img {
-  max-height: 200px;
-  margin: 0 auto;
-}
-
-.results-list-item header h2 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1.8rem;
-}
-
-.results-list-item header p {
-  margin: 0;
-}
-
-.results-list-item > div {
-  padding-bottom: 10px;
-  border-bottom: solid 1px #efefef;
-}
-
-.price {
-  color: #5CB85C;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-.item-description {
-  font-size: 0.8em;
-}
-
-.post-date {
-  font-weight: bold;
-  color: #28C0D5;
-}
-
-.sport-group--selected {
-  color: #fff;
-  font-weight: bold;
-  background-color: #b6e1e1;
-  box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-}
-
 .navbar-brand {
   background-color: white;
   padding: 0;
@@ -7426,8 +7366,10 @@ button.close {
 .login-page {
   margin-top: -20px;
   padding-top: 10px;
-  background: #070659;
-  /* Old browsers */
+}
+
+.login-page .view-container {
+  background-color: #070659;
 }
 
 .login-page h1 {
@@ -7452,67 +7394,6 @@ button.close {
   text-align: center;
   color: #5e5e5e;
   margin-top: 35px;
-}
-
-.skate-list {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.skate-list li:before {
-  content: '';
-  display: inline-block;
-  height: 10px;
-  width: 15px;
-  background-image: url("/img/skateLogo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.skate-list li a {
-  color: #b6e1e1;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.skate-list li a:hover {
-  color: #28C0D5;
-  text-decoration: none;
-}
-
-.contact-info {
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-
-.contact-info .material-button {
-  width: 100%;
-  max-width: 450px;
-}
-
-.btn-contact {
-  width: 100%;
-  background-color: #28C0D5;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 20px;
-  color: white;
-  font-weight: bold;
-  -webkit-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-}
-
-.btn-contact:hover {
-  background-color: #1C4888;
-}
-
-.btn-contact:focus {
-  background-color: #1C4888;
-}
-
-.reg-form .row {
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 
 /*General Form Styling*/
@@ -7576,7 +7457,7 @@ input.cash:before {
           transform: scale(0.75);
   left: -2px;
   /* font-size: 14px; */
-  color: #4a89dc;
+  color: #4A89DC;
 }
 
 .material-form-input:focus ~ .bar:before,
@@ -7601,7 +7482,7 @@ input.cash:before {
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #4a89dc;
+  background: #4A89DC;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -7741,7 +7622,7 @@ input.cash:before {
 
 .form-error--show {
   border: 1px solid red;
-  background-color: #FFF2EA;
+  background-color: #fefefe;
   color: red;
 }
 
@@ -7771,7 +7652,7 @@ input.cash:before {
 }
 
 .reg-form h1 {
-  background-color: #1C4888;
+  background-color: #1c4888;
   margin: 0 -15px 20px -15px;
   font-size: 3rem;
   color: white;
@@ -7865,13 +7746,6 @@ input.cash:before {
   overflow-x: visible !important;
 }
 
-.side-menu form {
-  max-height: 100%;
-  overflow-y: scroll;
-  position: relative;
-  z-index: 160;
-}
-
 .side-menu form::-webkit-scrollbar {
   max-width: 5px;
 }
@@ -7881,7 +7755,7 @@ input.cash:before {
   padding: 0;
   margin: 0;
   color: white;
-  background-color: #28C0D5;
+  background-color: #28c0d5;
 }
 
 .side-menu-header h2 {
@@ -7939,7 +7813,7 @@ input.cash:before {
   position: absolute;
   height: 45px;
   width: 80px;
-  background-color: #1C4888;
+  background-color: #1c4888;
   z-index: 150;
   left: 240px;
   top: 100px;
@@ -7997,40 +7871,16 @@ input[type=file] {
   z-index: -1;
 }
 
-.custom-nav {
-  background-color: #28c0d5;
-  color: #fefefe;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.lpfaded-enter-active,
+.lpfaded-leave-active {
+  z-index: 100000;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  opacity: 1;
 }
 
-.custom-nav ul {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-}
-
-.custom-nav li {
-  display: inline-block;
-}
-
-.custom-nav a {
-  color: #fefefe;
-  -webkit-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-
-.custom-nav a:hover {
-  color: #b6e1e1;
-}
-
-.primary-nav {
-  padding-top: 10px;
-  display: block;
-  width: 100%;
-}
-
-.primary-nav li {
-  text-align: center;
+.lpfaded-enter,
+.lpfaded-leave-to {
+  z-index: 100000;
+  opacity: 0;
 }

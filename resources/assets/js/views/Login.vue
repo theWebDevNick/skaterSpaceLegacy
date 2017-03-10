@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1><img src="/img/navLogoLG.png" style="max-height: 100px">Skater.Space</h1>
-
+        <passport-clients></passport-clients>
         <form class="col-xs-12 col-md-4 col-md-offset-4 material-form shadow-elevation-6dp" name="login" method="post" id="login" action="/login">
             <div class="material-form-input-group">
                 <input type="email" class="material-form-input" id="email" name="username" required="">
