@@ -24,20 +24,7 @@ class CoachController extends Controller
           ->get();
     }
     //
-    public function indexCoachesByClub($clubID)
-    {
-        User::with('coachingDisciplines')
-            ->select('id','first_name','last_name','home_timezone','profile_pic_url','page_slug','zip')
-            ->where([
-                ['is_coach',true],
-                ['is_active',true],
-                ['home_club',$clubID]
-            ])
-            ->get();
-
-    }
-    //
-    public function indexCoachesByDistance($locationPostal,$radius)
+    public function searchCoaches($clubID)
     {
 
     }

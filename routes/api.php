@@ -19,5 +19,6 @@ Route::get('/credentials/{cred}','CredentialController@getCredentialByIDWithSkil
 
 Route::get('/coach/','CoachController@index')->name('coachIndex');
 Route::get('/coach/{slug}','CoachController@getFullPageBiographyFromSlug')->name('coachProfilePage');
-
+Route::post('/coach','CoachController@search')->name('searchCoaches');
+/*--USER API ROUTES---*/
 

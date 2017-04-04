@@ -9,7 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
-        "way/generators": "^3.0"
+        "way/generators": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
