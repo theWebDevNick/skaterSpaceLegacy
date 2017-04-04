@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SkatingLevelsTableSeeder::class);//for dev and deploy
         $this->call(SkatingCredentialsTableSeeder::class);//for dev and deploy
         $this->call(skatingCredentialsSkillsTableSeeder::class);//for dev and deploy
+        $this->call(skatingClubsTableSeeder::class);
+        $this->call(UserTableSeeder::class);//for dev ONLY TODO: REMOVE
+        $this->call(SkaterCredentialsTableSeeder::class);//for dev ONLY TODO: REMOVE
+        $this->call(SkaterDisciplinesTableSeeder::class);//for dev ONLY TODO: REMOVE
+
     }
 }

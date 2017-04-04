@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/credentials/{$cred}',function(App\skating_credentials $cred){
-    return $cred;
-});
+/*---SKATING CREDENTIAL ROUTES ---*/
+Route::get('/credentials','CredentialController@index')->name('credentialIndex');
+Route::get('/credentials/{cred}','CredentialController@getCredentialByIDWithSkills')->name('credentialWithID');
+
+/*---COACH API ROUTES --*/
+
+Route::get('/coach/','CoachController@index')->name('coachIndex');
+Route::get('/coach/{slug}','CoachController@getFullPageBiographyFromSlug')->name('coachProfilePage');
 
 

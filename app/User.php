@@ -25,6 +25,55 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id',
+        'password',
+        'remember_token',
+        'created_at',
+        'updated_at',
+        'is_email_verified',
+        'email_sent',
+        'email_send_success',
+        'date_of_birth',
+        'email',
+        'is_active',
+        'home_club',
+        'user_type'
     ];
+
+    public function userType()
+    {
+        return $this->hasOne(user_types::class,'id','user_type')->select(['id','name']);
+    }
+    public function coachingDisciplines()
+    {
+        return $this
+            ->belongsToMany(skating_disciplines::class,'skater_disciplines','skater_id','discipline_id')
+            ->select('name','id')
+            ->where('is_coaching',true);
+    }
+    //
+    //
+    public function skatingDisciplines()
+    {
+        return $this
+            ->belongsToMany(skating_disciplines::class,'skater_disciplines','skater_id','discipline_id')
+            ->select('name','id');
+    }
+    //
+    //
+    public function coachingCredentials()
+    {
+        return $this
+            ->belongsToMany(skating_credentials::class,'skater_credentials','skater_id','credential_id')
+            ->with('skatingLevel','grantingOrg','program')
+            ->where([
+                ['is_coaching_credential',true],
+                ['show_on_profile',true]
+            ]);
+    }//
+    public function club()
+    {
+        return $this->hasOne(skating_clubs::class,'id','home_club')->select('id','name','short_name');
+    }
+
 }

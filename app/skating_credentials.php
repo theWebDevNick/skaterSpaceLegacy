@@ -13,7 +13,7 @@ class skating_credentials extends Model
     {
         return $this->belongsToMany(skating_skills::class,'skating_credentials_skills','credential_id','skill_id')->select(['skating_skills.id','name','resource_url']);
     }
-    public function programId()
+    public function program()
     {
         return $this->hasOne(skating_programs::class,'id','program_id')->select(['id','name']);
     }

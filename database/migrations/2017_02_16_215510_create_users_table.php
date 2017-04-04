@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->date('date_of_birth');
             $table->string('zip',10);
+            $table->decimal('latitude',7,4)->nullable();
+            $table->decimal('longitude',7,4)->nullable();
             $table->boolean('is_master_account')->default(false);
             $table->unsignedInteger('master_parent_account')->nullable();
             $table->unsignedInteger('user_type')->nullable();
@@ -29,6 +31,11 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('home_timezone',20);
             $table->unsignedInteger('home_club')->nullable();
+            $table->boolean('is_coach')->default(false);
+            $table->boolean('is_coach_validated')->default(false);
+            $table->text('bio')->nullable();//for coaches, for now
+            $table->string('page_slug')->unique()->nullable();//for coaches, for now
+            $table->string('profile_pic_url')->unique()->nullable();//for coaches, for now
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

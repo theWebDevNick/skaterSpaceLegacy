@@ -16,7 +16,18 @@ class SkatingCredentialsTableSeeder extends Seeder {
                 'granting_org'=>1,
                 'require_skills_completion'=>true,
                 'expires'=>false,
-                'is_active'=>true
+                'is_active'=>true,
+                'is_coaching_credential'=>false,
+            ],
+            [
+                'name'=>'LTS Instructor Rating (TEST)',
+                'skating_level'=>1,
+                'program_id'=>1,
+                'granting_org'=>1,
+                'require_skills_completion'=>false,
+                'expires'=>false,
+                'is_active'=>true,
+                'is_coaching_credential'=>true,
             ]
         ]);
 	}

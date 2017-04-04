@@ -18,20 +18,4 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('webApp');
 });
-
-
-
-Route::get('coach/{id}',function(App\coach_pages $coach){
-    return $coach;
-            });
-Route::get('/credentials',function($id){
-    //list all;
-});
-
-Route::get('/credentials/{cred}',function(App\skating_credentials $cred){
-    return $cred::with('skills','programId','skatingLevel','grantingOrg')->get();
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
