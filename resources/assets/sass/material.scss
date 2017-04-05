@@ -1,3 +1,4 @@
+
 .prenav
 {
   width:100vw;
@@ -108,10 +109,6 @@
 .navbar-brand img
 {
   height:50px;
-}
-.main-body
-{
-  padding: 0;
 }
 .login-page
 {
@@ -499,19 +496,13 @@ input.cash:before
 /*View Styling*/
 .view-container
 {
-  clear:both;
-  position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:90;
+
   min-height:100vh;
 }
 .view-container>.content
 {
   padding: 60px 25px 0 25px;
-  max-width:1160px;
+  max-width:1100px;
   margin:0 auto;
   height: 100%;
 
@@ -609,13 +600,61 @@ input[type=file]
   right: 0;
   top: 0;
 }
+.panel-default
+{
+    margin-top: 30px;
+    border-radius:0 ;
+}
+.panel-default .panel-heading
+{
+    color: white;
+    background-color: $primary-blue;
+}
+  .panel-default .panel-heading h2
+  {
+    margin: 0;
+  }
 .md-first-row
 {
-  background-color: $bg-purple;
+  background-color: $bg-blue;
   padding-top: 75px;
   padding-bottom: 15px;
-  margin-top: -60px;
+  margin-top: -120px;
   margin-left: -25px;
   margin-right: -25px;
   color:white;
+  position:relative;
+}
+
+.md-list
+{
+  list-style-type: none;
+  padding: 0;
+}
+
+  .md-list li
+  {
+    border-bottom: 1px solid #eee;
+
+  }
+    .md-list li h3
+    {
+      font-size: 16px;
+      font-weight: bold;
+    }
+@media (min-width: $screen-sm-min)
+{
+  .md-first-row header
+  {
+    padding-top: 10%;
+
+  }
+}
+@media (min-width: $screen-md-min)
+{
+  .md-first-row header
+  {
+    padding-top: 15%;
+
+  }
 }

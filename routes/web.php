@@ -21,6 +21,9 @@ Route::get('/account','HomeController@index')->name('account');
 Route::get('/coaches','CoachController@index')->name('coaches');
 Route::get('/coaches/{slug}','CoachController@getFullPageBiographyFromSlug_web')->name('coachProfile');
 
+/*---Organization Routes---*/
+Route::get('/orgs/{id}','OrganizationController@getOrganizationById')->name('getOrganizationById');
+
 Route::get('/app', function () {
     return view('webApp');
 });
