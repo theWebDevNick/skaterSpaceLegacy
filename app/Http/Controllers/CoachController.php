@@ -51,4 +51,28 @@ class CoachController extends Controller
             ->first();
         return $coach;
     }
+    //
+    public function getFullPageBiographyFromSlug_web($slug)
+    {
+        $coach = User::
+        with('coachingDisciplines','coachingCredentials','club','userType')
+            ->select(
+                'first_name',
+                'last_name',
+                'id',
+                'zip',
+                'home_timezone',
+                'bio',
+                'profile_pic_url',
+                'home_club',
+                'user_type'
+            )
+            ->where([
+                ['page_slug',$slug],
+                ['is_active',true]
+            ])
+            ->first();
+
+        return view('coachProfile',['coach'=>$coach]);
+    }
 }

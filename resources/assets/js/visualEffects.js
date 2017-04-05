@@ -5,7 +5,7 @@
 //
 //Keeps form label in upper-left corner on material form inputs
 var formInput=$('.material-form-input');
-formInput.blur(function() {
+formInput.on('change blur',function() {
     var current = $(this);
     if (current.val())
         current.addClass('used');

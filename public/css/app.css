@@ -7366,9 +7366,6 @@ button.close {
 .login-page {
   margin-top: -20px;
   padding-top: 10px;
-}
-
-.login-page .view-container {
   background-color: #070659;
 }
 
@@ -7377,23 +7374,19 @@ button.close {
   color: #fff;
 }
 
-.page-footer {
-  background-color: #0A0A0A;
-  padding: 0 0 20px 0;
-  color: #fff;
-}
-
-.page-footer:before {
-  content: "";
-  height: 25px;
-  background-color: #1c4888;
+footer {
+  background-color: #4A89DC;
+  min-height: 20px;
   width: 100%;
+  color: white;
 }
 
-.page-footer p {
-  text-align: center;
-  color: #5e5e5e;
-  margin-top: 35px;
+.footer_bottom {
+  background-color: #396aab;
+}
+
+.footer_bottom a {
+  color: white;
 }
 
 /*General Form Styling*/
@@ -7620,7 +7613,7 @@ input.cash:before {
   transition: all 0.5s ease;
 }
 
-.form-error--show {
+.form-error.show-error {
   border: 1px solid red;
   background-color: #fefefe;
   color: red;
@@ -7628,6 +7621,7 @@ input.cash:before {
 
 .accent-bg {
   background-color: #4A89DC;
+  border-bottom-color: #4A89DC;
   color: white;
 }
 
@@ -7739,7 +7733,7 @@ input.cash:before {
   bottom: 0;
   left: 0;
   z-index: 120;
-  background-color: white;
+  background-color: #070659;
   width: 290px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -7760,6 +7754,9 @@ input.cash:before {
 
 .side-menu-header h2 {
   margin-top: 0;
+  padding-top: 10px;
+  font-size: 2rem;
+  color: white;
   text-align: center;
 }
 
@@ -7799,7 +7796,7 @@ input.cash:before {
 }
 
 .view-container > .content {
-  padding: 60px 5px 0 5px;
+  padding: 60px 25px 0 25px;
   max-width: 1160px;
   margin: 0 auto;
   height: 100%;
@@ -7809,16 +7806,8 @@ input.cash:before {
   padding-top: 0;
 }
 
-.side-menu-toggler {
-  position: absolute;
-  height: 45px;
-  width: 80px;
-  background-color: #1c4888;
-  z-index: 150;
-  left: 240px;
-  top: 100px;
-  cursor: pointer;
-  display: none;
+.side-menu-toggler > i {
+  color: white;
 }
 
 .side-menu .row {
@@ -7829,11 +7818,37 @@ input.cash:before {
   margin-bottom: 5px;
 }
 
-.side-menu h3 {
-  margin-top: 0;
-  padding-top: 10px;
-  font-size: 2rem;
-  color: #28c0d5;
+.side-menu-body {
+  list-style-type: none;
+  padding: 15px 0 15px 0;
+}
+
+.side-menu-body li {
+  padding: 15px 25px 15px 35px;
+  border-bottom: 1px solid #9d9d9d;
+}
+
+.side-menu-body li a {
+  color: white;
+  font-size: 16px;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.side-menu-body li a:hover {
+  color: #4cae4c;
+  text-decoration: none;
+}
+
+.side-menu-body li.active {
+  background: #4A89DC;
+}
+
+.side-menu-body li.active a {
+  color: black;
+  font-size: 16px;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .vert-center {
@@ -7856,10 +7871,6 @@ input.cash:before {
   .side-menu--hidden {
     left: -300px;
   }
-
-  .side-menu-toggler {
-    display: block;
-  }
 }
 
 input[type=file] {
@@ -7869,6 +7880,27 @@ input[type=file] {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.body--overlaid .overlay {
+  background-color: #000;
+  opacity: .5;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.md-first-row {
+  background-color: #9B26AF;
+  padding-top: 75px;
+  padding-bottom: 15px;
+  margin-top: -60px;
+  margin-left: -25px;
+  margin-right: -25px;
+  color: white;
 }
 
 .lpfaded-enter-active,
@@ -7883,4 +7915,9 @@ input[type=file] {
 .lpfaded-leave-to {
   z-index: 100000;
   opacity: 0;
+}
+
+.navigation {
+  position: relative;
+  z-index: 1000;
 }

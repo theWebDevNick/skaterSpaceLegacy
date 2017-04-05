@@ -1,87 +1,69 @@
+<!--app shell for Skater.Space web app -->
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="The best coaching and skating app in the world of figure skating.">
+    <meta name="description" content="">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#28c0d5">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="apple-mobile-web-app-title" content="Skater.Space">
+    <meta name="application-name" content="Skater.Space">
+    <meta name="theme-color" content="#1c4888">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet"  href="/css/app.css">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+@if(Route::currentRouteName()=='login')
+    <body class="login-page">
+    @yield('content')
+@else
+    <body>
+    @include('partials.nav')
+    <div class="view-container">
+        <div class="content">
+            @yield('content')
+        </div>
+        <footer>
+            <div class="footer_body">
+                <div class="container">
+                    <div class="col-xs-12">
+                        <h3><strong>Skater.Space</strong></h3>
+                    </div>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
+                    <div class="col-xs-12 col-md-4">
+                        <p>A next-generation mobile and web app made by skaters and for skaters.</p>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        @yield('content')
+            <div class="footer_bottom">
+                <div class="container">
+                    <p>
+                        <span class="pull-left">
+                            &copy 2017 Copyright
+                        </span>
+                        <span class="pull-right">
+                            <a href="">Terms</a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @endif
+<script src="/js/app.js"></script>
 </body>
 </html>
