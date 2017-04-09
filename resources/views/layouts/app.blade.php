@@ -26,17 +26,19 @@
     <link rel="stylesheet"  href="/css/app.css">
 </head>
 
-@if(Route::currentRouteName()=='login')
+@if(Route::currentRouteName()=='login' || Route::currentRouteName()=='register')
     <body class="login-page">
+    @include('partials.messages')
     @yield('content')
 @else
     <body>
+    @include('partials.messages')
     @include('partials.nav')
     <div class="view-container">
         <div class="content">
             @yield('content')
         </div>
-        <footer>
+        <footer class="footer">
             <div class="footer_body">
                 <div class="container">
                     <div class="col-xs-12">

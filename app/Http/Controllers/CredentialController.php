@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class CredentialController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {//abbreviated list of all credentials. Does not include a individual skills
         return skating_credentials::with('program','skatingLevel','grantingOrg')->get();

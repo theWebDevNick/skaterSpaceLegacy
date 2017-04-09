@@ -1,8 +1,31 @@
-
 .prenav
 {
   width:100vw;
   height: 30px;
+}
+
+.full-width
+{
+  width: 100%;
+  margin: 0;
+}
+.white
+{
+  color:white;
+}
+.flash-message
+{
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  background-color:$primary-purple;
+  color: whitesmoke;
+  font-weight: bold;
+  z-index: 100000;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 #myCarousel
 {
@@ -121,7 +144,7 @@
   text-align: center;
   color: #fff;
 }
-footer
+.footer
 {
   background-color: $accent-bg;
   min-height: 20px;
@@ -137,6 +160,11 @@ footer
     color: white;
   }
 /*General Form Styling*/
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+  color: transparent;
+}
 .material-form{
   padding: 3em 2em 2em 2em;
   border: 1px solid #ebebeb;
@@ -149,7 +177,7 @@ input.cash:before
 }
 .material-form-input-group {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 .material-form-input-group>label {
   color: #999;
@@ -362,22 +390,20 @@ input.cash:before
 }
 .reg-form
 {
-  margin-top: -25px;
-  padding-bottom: 100px;
+  padding-top: 0;
 }
-.reg-form h1
+  .reg-form header
+  {
+    margin-bottom: 30px;
+  }
+.modal-content
 {
-  background-color: $bg-blue;
-  margin:0 -15px 20px -15px;
-  font-size: 3rem;
+  border-radius: 0;
+}
+.modal-header
+{
+  background-color: $primary-blue;
   color: white;
-  text-align: center;
-  padding: 45px 15px 30px 15px;
-  border-bottom: 10px solid $secondary-blue;
-}
-.reg-form fieldset:first-of-type
-{
-  border-bottom: 5px solid $secondary-blue;
 }
 /*Shadow Classes*/
 
@@ -494,17 +520,12 @@ input.cash:before
 
 
 /*View Styling*/
-.view-container
-{
-
-  min-height:100vh;
-}
 .view-container>.content
 {
-  padding: 60px 25px 0 25px;
+  padding: 0px 25px 0 25px;
   max-width:1100px;
   margin:0 auto;
-  height: 100%;
+  min-height:100vh;
 
 }
 .view-container>.content p
@@ -607,6 +628,7 @@ input[type=file]
 }
 .panel-default .panel-heading
 {
+    border-radius: 0;
     color: white;
     background-color: $primary-blue;
 }
@@ -619,7 +641,7 @@ input[type=file]
   background-color: $bg-blue;
   padding-top: 75px;
   padding-bottom: 15px;
-  margin-top: -120px;
+  margin-top: -60px;
   margin-left: -25px;
   margin-right: -25px;
   color:white;

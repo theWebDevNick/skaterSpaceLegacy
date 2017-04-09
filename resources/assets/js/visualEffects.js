@@ -30,4 +30,8 @@ ripples.click(function(e) {
 ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
     $(this).removeClass('is-active');
 });
+
+setTimeout(function(){
+    $(".flash-message").fadeOut("slow");
+},3000);
 //

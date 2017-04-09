@@ -11,10 +11,17 @@ use Illuminate\Http\Request;
 class CoachController extends Controller
 {
     //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
         //abbreviated list of coaches
-      return
+      $coaches=
           User::with('coachingDisciplines')
           ->select('id','first_name','last_name','home_timezone','profile_pic_url','page_slug','zip')
           ->where([
@@ -22,6 +29,8 @@ class CoachController extends Controller
               ['is_active',true]
           ])
           ->get();
+
+        return view('coachDash',['coaches'=>$coaches]);
     }
     //
     public function searchCoaches($clubID)

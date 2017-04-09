@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row md-first-row shadow-elevation-4dp" xmlns="http://www.w3.org/1999/html">
+    <div class="row md-first-row shadow-elevation-4dp" >
         <div class="col-xs-12 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2">
             <img src="{{!empty($coach->profile_pic_url) ? $coach->profile_pic_url:"/img/default.jpg"}}" alt="{{$coach->first_name.' '.$coach->last_name}}" title="Figure Skating Coach {{$coach->first_name.' '.$coach->last_name}}" class="img-circle img-responsive">
         </div>

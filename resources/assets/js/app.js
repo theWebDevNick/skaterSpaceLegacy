@@ -1,6 +1,7 @@
 require('./bootstrap');
 require('./visualEffects');
 require('./checkFormAutofill');
+require('./bootstrap')
 $('.side-menu-toggle').click(function(e){
     e.preventDefault();
     $('.side-menu').toggleClass('side-menu--hidden');

@@ -2,11 +2,11 @@
     <div class="overlay"></div>
     <nav class="navbar navbar-default shadow-elevation-4dp accent-bg">
         <div class="container">
-            <ul class="nav navbar-nav">
-                <li><a href="" class="side-menu-toggler side-menu-toggle"><i class="fa fa-bars fa-lg"></i></a></li>
+            <ul class="nav navbar-nav full-width">
+                <li class="pull-left"><a href="" class="side-menu-toggler side-menu-toggle"><i class="fa fa-bars fa-lg"></i></a></li>
+                <li class="pull-right"><a href="{{route('getLogout')}}" ><i class="fa fa-sign-out fa-lg white"></i></a></li>
             </ul>
-            <!-- Brand and toggle get grouped for better mobile display -->
-        </div><!-- /.container-fluid -->
+        </div>
     </nav>
     <nav class="side-menu shadow-elevation-12dp side-menu--hidden">
         <header class="side-menu-header">
