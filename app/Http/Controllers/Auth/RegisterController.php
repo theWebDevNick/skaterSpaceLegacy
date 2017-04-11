@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\skating_disciplines;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -48,9 +49,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'first_name' => 'required|max:150',
+            'last_name' => 'required|max:150',
+            'email' => 'required|email|max:150|unique:users',
             'password' => 'required|min:6|confirmed',
+            'zip'=>'required|regex:/\b\d{5}\b/',
+
+
         ]);
     }
 
@@ -62,10 +67,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $gURL ="https://api.geocod.io/v1/geocode?postal_code={$data['zip']}&fields=timezone&api_key={config('app.geocodioAPIKey')}";
+        if($location=json_decode(file_get_contents($gURL)))
+        {
+            $region=!empty($location->results[0]->address_components->state) ? $location->results[0]->address_components->state:null;
+            $municipality=!empty($location->results[0]->address_components->city) ? $location->results[0]->address_components->city:null;
+            $lat=!empty($location->results[0]->location->lat) ? $location->results[0]->location->lat:null;
+            $lng=!empty($location->results[0]->location->lng) ? $location->results[0]->location->lng:null;
+            $timezone=!empty($location->results[0]->fields->timezone->name) ? $location->results[0]->fields->timezone->name:null;
+        }
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+
         ]);
+        return $user;
+    }
+
+    /**
+     * OVERRIDES THE showRegistrationFrom METHOD INHERITED FROM Illuminate\Foundation\Auth\RegistersUsers;
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $disciplines= skating_disciplines::all();
+        return view('auth.register',['disciplines'=>$disciplines]);
     }
 }

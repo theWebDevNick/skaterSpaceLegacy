@@ -26,7 +26,10 @@
                 <a  href="{{route('practice')}}"><i class="fa fa-history"></i>&nbsp;&nbsp;My Practice</a>
             </li>
             <li class="{{Route::currentRouteName()=='coaches' ? 'active':''}}">
-                <a  href="{{route('coaches')}}"><i class="fa fa-users"></i>&nbsp;&nbsp;My Coaches</a>
+                <a  href="{{route('coaches')}}"><i class="fa fa-users"></i>&nbsp;&nbsp;My Coaching</a>
+            </li>
+            <li class="">
+                <a  href=""><i class="fa fa-handshake-o"></i>&nbsp;&nbsp;Partner Finder</a>
             </li>
             <li class="{{Route::currentRouteName()=='swap' ? 'active':''}}">
                 <a  href="{{route('swap')}}"><i class="fa fa-exchange"></i>&nbsp;&nbsp;Skate Swap</a>

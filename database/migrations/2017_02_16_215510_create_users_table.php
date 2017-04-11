@@ -15,13 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name',100);
-            $table->string('last_name',100);
-            $table->string('email')->unique();
+            $table->string('first_name',150);
+            $table->string('last_name',150);
+            $table->string('email',150)->unique();
             $table->date('date_of_birth');
-            $table->string('zip',10);
-            $table->decimal('latitude',7,4)->nullable();
-            $table->decimal('longitude',7,4)->nullable();
+            $table->string('municipality')->nullable();
+            $table->char('region',2)->nullable();
+            $table->string('zip',6);
+            $table->decimal('latitude',9,5)->nullable();
+            $table->decimal('longitude',9,5)->nullable();
             $table->boolean('is_master_account')->default(false);
             $table->unsignedInteger('master_parent_account')->nullable();
             $table->unsignedInteger('user_type')->nullable();
@@ -31,6 +33,8 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('home_timezone',20);
             $table->unsignedInteger('home_club')->nullable();
+            $table->string('psa_number')->nullable();
+            $table->string('usfsa_number')->nullable();
             $table->boolean('is_coach')->default(false);
             $table->boolean('is_coach_validated')->default(false);
             $table->text('bio')->nullable();//for coaches, for now

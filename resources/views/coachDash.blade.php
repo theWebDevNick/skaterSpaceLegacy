@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-
-
-    <div class="row">
+      <div class="row">
         <div class="col-xs-12 col-md-6">
             <div class="panel panel-default shadow-elevation-2dp">
                 <div class="panel-heading">
@@ -19,7 +17,6 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-4">
                             <button type="button" class="material-button bg-primary">
-
                                 <span>Schedule Lessons</span>
                                 <div class="ripples buttonRipples">
                                     <span class="ripplesCircle"></span>
@@ -45,7 +42,12 @@
                     <h2>Find Coaches</h2>
                 </div>
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            Search for a coach
 
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-xs-12 col-md-6 col-md-offset-6">
                             <button type="button" class="material-button bg-primary">

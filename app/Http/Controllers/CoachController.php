@@ -33,7 +33,7 @@ class CoachController extends Controller
         return view('coachDash',['coaches'=>$coaches]);
     }
     //
-    public function searchCoaches($clubID)
+    public function searchCoaches()
     {
 
     }

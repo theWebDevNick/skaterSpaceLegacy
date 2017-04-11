@@ -63,14 +63,14 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <div class="material-form-input-group {{ $errors->has('email-confirm') ? ' invalid' : '' }}">
-                        <input type="email" class="material-form-input" id="email-confirm" name="email-confirm" value="{{ old('email-confirm') }}" required autofocus>
+                    <div class="material-form-input-group {{ $errors->has('email_confirmation') ? ' invalid' : '' }}">
+                        <input type="email" class="material-form-input" id="email_confirmation" name="email_confirmation" value="{{ old('email_confirmation') }}" required autofocus>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label for="email-confirm">Confirm Email</label>
-                        @if($errors->has('email-confirm'))
+                        <label for="email_confirmation">Confirm Email</label>
+                        @if($errors->has('email_confirmation'))
                             <span class="error material-error show-error">
-                                 <strong>{{ $errors->first('email-confirm') }}</strong>
+                                 <strong>{{ $errors->first('email_confirmation') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -78,14 +78,14 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <div class="material-form-input-group {{ $errors->has('postal') ? ' invalid' : '' }}">
-                        <input type="text" class="material-form-input" id="postal" name="postal" value="{{ old('postal') }}" required autofocus>
+                    <div class="material-form-input-group {{ $errors->has('zip') ? ' invalid' : '' }}">
+                        <input type="text" class="material-form-input" id="zip" name="zip" value="{{ old('zip') }}" required autofocus>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label for="postal">Zip/Postal Code</label>
-                        @if($errors->has('postal'))
+                        @if($errors->has('zip'))
                             <span class="error material-error show-error">
-                                 <strong>{{ $errors->first('postal') }}</strong>
+                                 <strong>{{ $errors->first('zip') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -104,6 +104,50 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <hr>
+                <div class="col-xs-12">
+                    <p>
+                        What  areas of skating do you participate in (select all that apply)?
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                @foreach($disciplines as $discipline)
+                    <div class="col-xs-12 col-md-3">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="{{$discipline->id}}">{{$discipline->name}}</label>
+                        </div>
+
+                    </div>
+                @endforeach
+            </div>
+            <div class="row">
+                <hr>
+                <div class="col-xs-12">
+                    <p>
+                        Are you signing up as a figure skating coach?
+                    </p>
+                    <label class="radio-inline">
+                        <label><input type="radio" name="is_coach" value="true">Yes</label>
+                    </label>
+                    <label class="radio-inline">
+                        <label><input type="radio" name="is_coach" value="false" checked>No</label>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-4 col-md-offset-4">
+                    <button type="submit" class="material-button accent-bg">
+                        <span class="md-btn-text">Register for  Skater.Space</span>
+                        <div class="ripples buttonRipples">
+                            <span class="ripplesCircle"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
         </form>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="modalWhy">
@@ -133,7 +177,7 @@
                         <li>
                             <strong>Your zip/postal code</strong>:
                             We use this information to help you find figure skating clubs and coaches near you. In the future, we may also use this information to find test sessions and competitions near you, but that is currently not featured in this release of skater.space.
-                            Also, skater.space is currently limited to residents of the United States and Canada. The zip/postal code is used to verify that your are a resident of the US or Canada.
+                            Also, skater.space is currently limited to residents of the United States. The zip/postal code is used to verify that your are a resident of the US.
                         </li>
                     </ul>
                 </div>
