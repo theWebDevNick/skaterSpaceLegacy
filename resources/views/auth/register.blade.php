@@ -63,21 +63,6 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <div class="material-form-input-group {{ $errors->has('email_confirmation') ? ' invalid' : '' }}">
-                        <input type="email" class="material-form-input" id="email_confirmation" name="email_confirmation" value="{{ old('email_confirmation') }}" required autofocus>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label for="email_confirmation">Confirm Email</label>
-                        @if($errors->has('email_confirmation'))
-                            <span class="error material-error show-error">
-                                 <strong>{{ $errors->first('email_confirmation') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
                     <div class="material-form-input-group {{ $errors->has('zip') ? ' invalid' : '' }}">
                         <input type="text" class="material-form-input" id="zip" name="zip" value="{{ old('zip') }}" required autofocus>
                         <span class="highlight"></span>
@@ -90,15 +75,30 @@
                         @endif
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <div class="material-form-input-group {{ $errors->has('dob') ? ' invalid' : '' }}">
-                        <input type="date" class="material-form-input" id="dob" name="dob" value="{{ old('dob') }}" required placeholder="false">
+                    <div class="material-form-input-group {{ $errors->has('password') ? ' invalid' : '' }}">
+                        <input type="password" class="material-form-input" id="password" name="password" value="{{ old('password') }}" required autofocus>
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label for="dob">Date of Birth</label>
-                        @if($errors->has('dob'))
+                        <label for="password">Password</label>
+                        @if($errors->has('password'))
                             <span class="error material-error show-error">
-                                 <strong>{{ $errors->first('dob') }}</strong>
+                                 <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="material-form-input-group {{ $errors->has('password_confirmation') ? ' invalid' : '' }}">
+                        <input type="password" class="material-form-input" id="password_confirmation" name="password_confirmation" value="{{ old('password_confirmation') }}" required autofocus>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label for="password_confirmation">Confirm Password</label>
+                        @if($errors->has('password_confirmation'))
+                            <span class="error material-error show-error">
+                                 <strong>{{ $errors->first('password_confirmation') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -117,7 +117,7 @@
                 @foreach($disciplines as $discipline)
                     <div class="col-xs-12 col-md-3">
                         <div class="checkbox">
-                            <label><input type="checkbox" value="{{$discipline->id}}">{{$discipline->name}}</label>
+                            <label><input type="checkbox" name="disciplines[{{$loop->index}}]"  value="{{$discipline->id}}">{{$discipline->name}}</label>
                         </div>
 
                     </div>
@@ -130,11 +130,32 @@
                         Are you signing up as a figure skating coach?
                     </p>
                     <label class="radio-inline">
-                        <label><input type="radio" name="is_coach" value="true">Yes</label>
+                        <label><input type="radio" name="is_coach" value="1">Yes</label>
                     </label>
                     <label class="radio-inline">
-                        <label><input type="radio" name="is_coach" value="false" checked>No</label>
+                        <label><input type="radio" name="is_coach" value="0" checked>No</label>
                     </label>
+                </div>
+            </div>
+            <div class="hidden-initially">
+                <div class="row">
+                    <hr>
+                    <div class="col-xs-12">
+                        <p>
+                            What  areas of skating do you currently <strong>coach</strong> (select all that apply)?
+                        </p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach($disciplines as $discipline)
+                        <div class="col-xs-12 col-md-3">
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="coaching_disciplines[{{$loop->index}}]"  value="{{$discipline->id}}">{{$discipline->name}}</label>
+                            </div>
+
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="row">
@@ -147,7 +168,11 @@
                     </button>
                 </div>
             </div>
-
+            <div class="row">
+                <pre>
+                    {{var_dump($errors)}}
+                </pre>
+            </div>
         </form>
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="modalWhy">
@@ -169,10 +194,6 @@
                         <li>
                             <strong>Your Email Address</strong>:
                             We use this to verify your account, send you messages about your account, and allow you to manage your account if your forget your password. <strong>No one</strong> gets to see your email address, as all messaging is handled within the skater.space app. Your email is important and private to you, so we do not sell or share your email address with anyone.
-                        </li>
-                        <li>
-                            <strong>Your Birth Date</strong>:
-                            We do not allow anyone under the age of 13 years to register, so we use this during registration to verify that you are old enough to use skater.space. If you are under 13, <strong> your parent must create an account and then add you as a sub-account</strong>.
                         </li>
                         <li>
                             <strong>Your zip/postal code</strong>:

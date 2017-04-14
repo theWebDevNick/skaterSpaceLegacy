@@ -61,7 +61,7 @@ return [
     |
     |
     */
-    'geocodioAPIKey' =>env('GEOCODIO_API_KEY    ',''),
+    'geocodioAPIKey' =>env('GEOCODIO_API_KEY',''),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

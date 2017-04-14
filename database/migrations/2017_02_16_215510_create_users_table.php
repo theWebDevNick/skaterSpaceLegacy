@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name',150);
             $table->string('last_name',150);
             $table->string('email',150)->unique();
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->nullable();
             $table->string('municipality')->nullable();
             $table->char('region',2)->nullable();
             $table->string('zip',6);

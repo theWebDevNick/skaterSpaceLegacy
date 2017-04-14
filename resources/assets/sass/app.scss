@@ -22,6 +22,11 @@
   z-index: 1000;
 }
 
+.hidden-initially
+{
+  display:none;
+  margin-bottom: 30px;
+}
 /*::-webkit-datetime-edit-text { color: transparent;}
 ::-webkit-datetime-edit-month-field { color: transparent; }
 ::-webkit-datetime-edit-day-field { color: transparent; }
