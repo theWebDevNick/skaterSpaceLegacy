@@ -28,10 +28,10 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('master_parent_account')->nullable();
             $table->unsignedInteger('user_type')->nullable();
             $table->boolean('is_email_verified')->default(false);
-            $table->date('email_sent')->nullable();
-            $table->boolean('email_send_success')->default(false);
+            $table->dateTime('email_sent')->nullable();
+            $table->char('email_token',25)->nullable();
             $table->boolean('is_active')->default(true);
-            $table->string('home_timezone',20);
+            $table->string('home_timezone',20)->default('UTC');
             $table->unsignedInteger('home_club')->nullable();
             $table->string('psa_number')->nullable();
             $table->string('usfsa_number')->nullable();

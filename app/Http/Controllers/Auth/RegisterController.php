@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\UserEmailValidation;
 use App\skater_disciplines;
 use App\skating_disciplines;
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -70,19 +73,27 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //create array to build user on
+        $token =str_random(25);//not really a "token" per se---just need a hard-to-guess link for the email
+
         $newUser = array(
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'zip'=>$data['zip'],
-            'is_coach'=>$data['is_coach']);
+            'is_coach'=>$data['is_coach'],
+            'email_token' =>$token
+            );
         //
         //Get location information
         $key=config('app.geocodioAPIKey');
         $gURL ="https://api.geocod.io/v1/geocode?postal_code={$data['zip']}&fields=timezone&api_key={$key}";
-        if($location=json_decode(file_get_contents($gURL)))
+
+
+        //make Geocodio API call, suppress errors
+        if($location=@json_decode(@file_get_contents($gURL)))
         {
+
             //if Geocodio API returns results, add them to the array
 
             //
@@ -132,6 +143,14 @@ class RegisterController extends Controller
                 ]);
             }
         }
+        //
+        //Now send email to welcome user and validate email
+        $name = "{$user->first_name} {$user->last_name}";
+        $tokenRoute=route('verifyEmail',$token);
+         Mail::to($user)->send(new UserEmailValidation($name,$tokenRoute));
+        $user->email_sent = Carbon::now();
+        $user->save();
+        session()->flash('defaultMessage','Welcome to Skater.Space. Please check your email for an important verification message.');
         return $user;
     }
 
