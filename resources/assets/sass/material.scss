@@ -520,6 +520,10 @@ input.cash:before
 
 
 /*View Styling*/
+body
+{
+
+}
 .view-container>.content
 {
   padding: 0px 25px 0 25px;
@@ -610,6 +614,10 @@ input[type=file]
   z-index: -1;
 }
 
+.body--overlaid
+{
+  overflow: hidden;
+}
 .body--overlaid .overlay
 {
   background-color: #000;

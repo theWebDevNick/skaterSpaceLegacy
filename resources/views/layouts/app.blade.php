@@ -23,6 +23,8 @@
     <meta name="theme-color" content="#1c4888">
 
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/mdb.min.css">
     <link rel="stylesheet"  href="/css/app.css">
 </head>
 
@@ -34,10 +36,7 @@
         <body>
         @include('partials.messages')
         @include('partials.nav')
-        <div class="view-container">
-            <div class="content">
                 @yield('content')
-            </div>
             <footer class="footer">
                 <div class="footer_body">
                     <div class="container">
@@ -63,7 +62,6 @@
                     </div>
                 </div>
             </footer>
-        </div>
 
         @endif
         <script>
@@ -77,6 +75,8 @@
             ga('set', 'userId', '{{\Illuminate\Support\Facades\Auth::user()->id}}'); // Set the user ID using signed-in user_id.
             @endif
         </script>
+        <script src="/js/jquery-3.1.1.min.js"></script>
         <script src="/js/app.js"></script>
+        <script src="/js/mdb.min.js"></script>
     </body>
 </html>

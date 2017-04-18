@@ -5,7 +5,16 @@
 // Variables
 @import "variables";
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-@import "material";
+.login-page
+{
+  margin-top: -20px;
+  padding-top: 10px;
+  background-color: $bg-blue-2;
+}
+.login-page h1 {
+  text-align: center;
+  color: #fff;
+}
 .lpfaded-enter-active, .lpfaded-leave-active
   {
   z-index:100000;
@@ -27,7 +36,4 @@
   display:none;
   margin-bottom: 30px;
 }
-/*::-webkit-datetime-edit-text { color: transparent;}
-::-webkit-datetime-edit-month-field { color: transparent; }
-::-webkit-datetime-edit-day-field { color: transparent; }
-::-webkit-datetime-edit-year-field { color: transparent; }*/
+

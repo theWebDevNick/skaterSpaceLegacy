@@ -1,7 +1,5 @@
-require('./bootstrap');
 require('./visualEffects');
 require('./checkFormAutofill');
-require('./bootstrap');
 
 var hidden = $('.hidden-initially');
 $('.side-menu-toggle').click(function(e){

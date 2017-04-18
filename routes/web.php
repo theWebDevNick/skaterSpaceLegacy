@@ -17,7 +17,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 /*--General Routes --*/
 Route::get('/dashboard','HomeController@index')->name('dashboard');
 Route::get('/lessons','HomeController@index')->name('lessons');
-Route::get('/practice','HomeController@index')->name('practice');
+
 Route::get('/swap','HomeController@index')->name('swap');
 Route::get('/account','AccountController@index')->name('account');
 
@@ -29,6 +29,17 @@ Route::get('/coaches/{slug}','CoachController@getFullPageBiographyFromSlug_web')
 
 /*---Organization Routes---*/
 Route::get('/orgs/{id}','OrganizationController@getOrganizationById')->name('getOrganizationById');
+
+
+
+/*--Practice Routes ---*/
+Route::get('/practice','PracticeController@index')->name('practice');
+Route::get('/practice/create','PracticeController@createForm')->name('createPracticeForm');
+Route::post('/practice/create','PracticeController@create')->name('createPractice');
+Route::get('/practice/edit/{id}','PracticeController@edit')->name('editPracticeForm');
+Route::patch('/practice/edit','PracticeController@editForm')->name('editPractice');
+
+
 
 Route::get('/app', function () {
     return view('webApp');

@@ -1,42 +1,34 @@
-<div class="navigation" >
-    <div class="overlay"></div>
-    <nav class="navbar navbar-default shadow-elevation-4dp accent-bg">
-        <div class="container">
-            <ul class="nav navbar-nav full-width">
-                <li class="pull-left"><a href="" class="side-menu-toggler side-menu-toggle"><i class="fa fa-bars fa-lg"></i></a></li>
-                <li class="pull-right"><a href="{{route('getLogout')}}" ><i class="fa fa-sign-out fa-lg white"></i></a></li>
+<nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <strong>Navbar</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item">Action</a>
+                        <a class="dropdown-item">Another action</a>
+                        <a class="dropdown-item">Something else here</a>
+                    </div>
+                </li>
             </ul>
+            <form class="form-inline waves-effect waves-light">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
         </div>
-    </nav>
-    <nav class="side-menu shadow-elevation-12dp side-menu--hidden">
-        <header class="side-menu-header">
-            <div class="vert-center">
-                
-                <h2>Nicholas Coates</h2>
-            </div>
-        </header>
-        <ul class="side-menu-body">
-            <li class="{{Route::currentRouteName()=='dashboard' ? 'active':''}}">
-                <a href="{{route('dashboard')}}"><i class="fa fa-snowflake-o"></i>&nbsp;&nbsp;My Dashboard</a>
-            </li>
-            <li class="{{Route::currentRouteName()=='lessons' ? 'active':''}}">
-                <a  href="{{route('lessons')}}"><i class="fa fa-lightbulb-o"></i>&nbsp;&nbsp;My Lessons</a>
-            </li>
-            <li class="{{Route::currentRouteName()=='practice' ? 'active':''}}">
-                <a  href="{{route('practice')}}"><i class="fa fa-history"></i>&nbsp;&nbsp;My Practice</a>
-            </li>
-            <li class="{{Route::currentRouteName()=='coaches' ? 'active':''}}">
-                <a  href="{{route('coaches')}}"><i class="fa fa-users"></i>&nbsp;&nbsp;My Coaching</a>
-            </li>
-            <li class="">
-                <a  href=""><i class="fa fa-handshake-o"></i>&nbsp;&nbsp;Partner Finder</a>
-            </li>
-            <li class="{{Route::currentRouteName()=='swap' ? 'active':''}}">
-                <a  href="{{route('swap')}}"><i class="fa fa-exchange"></i>&nbsp;&nbsp;Skate Swap</a>
-            </li>
-            <li class="{{Route::currentRouteName()=='account' ? 'active':''}}">
-                <a  href="{{route('account')}}"><i class="fa fa-user-circle"></i>&nbsp;&nbsp;My Account</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+    </div>
+</nav>
