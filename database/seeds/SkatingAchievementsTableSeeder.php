@@ -4,11 +4,11 @@
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
-class SkatingCredentialsTableSeeder extends Seeder {
+class SkatingAchievementsTableSeeder extends Seeder {
 
 	public function run()
 	{
-        DB::table('skating_credentials')->insert([
+        DB::table('skating_achievements')->insert([
             [
                 'name'=>'LTS Basic 1 Completion',
                 'skating_level'=>1,

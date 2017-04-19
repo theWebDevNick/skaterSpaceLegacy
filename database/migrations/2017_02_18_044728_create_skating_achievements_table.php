@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkatingCredentialsTable extends Migration
+class CreateSkatingAchievementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSkatingCredentialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skating_credentials', function (Blueprint $table) {
+        Schema::create('skating_achievements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique;
             $table->unsignedInteger('skating_level')->nullable();
@@ -39,6 +39,6 @@ class CreateSkatingCredentialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skating_credentials');
+        Schema::dropIfExists('skating_achievements');
     }
 }

@@ -5,7 +5,7 @@
 | Web Routes
 |--------------------------------------------------------------------------
 */
-use App\skating_credentials;
+use App\skating_achievements;
 
 Route::get('/', function () {
     return view('welcome');

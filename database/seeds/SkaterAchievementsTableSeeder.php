@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class SkaterCredentialsTableSeeder extends Seeder
+class SkaterAchievementsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,27 +13,27 @@ class SkaterCredentialsTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('skater_credentials')->insert([
+        DB::table('skater_achievements')->insert([
             [
-                'credential_id'=>1,
+                'achievement_id'=>1,
                 'skater_id'=>1,
                 'show_on_profile'=>true,
                 'date_earned'=>'2017-01-01'
             ],
             [
-                'credential_id'=>2,
+                'achievement_id'=>2,
                 'skater_id'=>1,
                 'show_on_profile'=>true,
                 'date_earned'=>'2017-01-01'
             ],
             [
-                'credential_id'=>1,
+                'achievement_id'=>1,
                 'skater_id'=>2,
                 'show_on_profile'=>true,
                 'date_earned'=>'2017-01-01'
             ],
             [
-                'credential_id'=>2,
+                'achievement_id'=>2,
                 'skater_id'=>2,
                 'show_on_profile'=>true,
                 'date_earned'=>'2017-01-01'

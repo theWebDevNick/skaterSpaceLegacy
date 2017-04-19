@@ -7,18 +7,29 @@ use Illuminate\Http\Request;
 | API Routes
 |--------------------------------------------------------------------------
 */
+/*--USER API ROUTES---*/
+//register new User with API
+Route::post('/register','UserController@generateUserViaAPI')->name('');
+/*---SKATING ACHIEVEMENT ROUTES ---*/
+Route::get('/achievements','AchievementController@index')->name('achievements');
+Route::get('/achievements/{id}','AchievementController@getCredentialByID')->name('credentialWithID_api');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-/*---SKATING CREDENTIAL ROUTES ---*/
-Route::get('/credentials','CredentialController@index')->name('credentialIndex_api');
-Route::get('/credentials/{cred}','CredentialController@getCredentialByIDWithSkills')->name('credentialWithID_api');
+/*---Program Routes---*/
+
+/*---Skill Routes---*/
+
+/*---Organization Routes---*/
 
 /*---COACH API ROUTES --*/
-
+//First are public routes
 Route::get('/coach/','CoachController@index')->name('coachIndex_api');
+Route::post('/coach/','CoachController@search')->name('searchCoachesAPI');
 Route::get('/coach/{slug}','CoachController@getFullPageBiographyFromSlug')->name('coachProfilePage_api');
-Route::get('/coach/search','CoachController@search')->name('searchCoaches_api');
-/*--USER API ROUTES---*/
 
+
+/*---Practice Routes---*/
+
+/*----Lesson Routes---*/
+
+
+/*---Message/Thread Routes-----*/

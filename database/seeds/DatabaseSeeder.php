@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,11 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(userTypesTableSeeder::class);//for dev and deploy
         $this->call(SkatingProgramsTableSeeder::class);//for dev and deploy
         $this->call(SkatingLevelsTableSeeder::class);//for dev and deploy
-        $this->call(SkatingCredentialsTableSeeder::class);//for dev and deploy
-        $this->call(skatingCredentialsSkillsTableSeeder::class);//for dev and deploy
+        $this->call(SkatingAchievementsTableSeeder::class);//for dev and deploy
+        $this->call(skatingAchievementSkillsTableSeeder::class);//for dev and deploy
         $this->call(skatingClubsTableSeeder::class);
         $this->call(UserTableSeeder::class);//for dev ONLY TODO: REMOVE
-        $this->call(SkaterCredentialsTableSeeder::class);//for dev ONLY TODO: REMOVE
+        $this->call(SkaterAchievementsTableSeeder::class);//for dev ONLY TODO: REMOVE
         $this->call(SkaterDisciplinesTableSeeder::class);//for dev ONLY TODO: REMOVE
 
     }

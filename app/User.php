@@ -64,7 +64,7 @@ class User extends Authenticatable
     public function coachingCredentials()
     {
         return $this
-            ->belongsToMany(skating_credentials::class,'skater_credentials','skater_id','credential_id')
+            ->belongsToMany(skating_achievements::class,'skater_achievements','skater_id','achievement_id')
             ->with('skatingLevel','grantingOrg','program')
             ->where([
                 ['is_coaching_credential',true],

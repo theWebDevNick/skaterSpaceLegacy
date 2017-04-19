@@ -2,45 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CoachSearchRequest;
 use App\User;
 use App\user_types;
-use App\skater_credentials;
-use App\skating_credentials;
+use App\skater_achievements;
+use App\skating_achievements;
 use Illuminate\Http\Request;
 
 class CoachController extends Controller
 {
     //
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     public function index()
     {
         //abbreviated list of coaches
-      $coaches=
-          User::with('coachingDisciplines')
+          return User::with('coachingDisciplines')
           ->select('id','first_name','last_name','home_timezone','profile_pic_url','page_slug','zip')
           ->where([
               ['is_coach',true],
               ['is_active',true]
           ])
-          ->get();
-
-        return view('coachDash',['coaches'=>$coaches]);
+          ->paginate(20);
     }
     //
-    public function searchCoaches()
+    public function search(CoachSearchRequest $request)
     {
-
+        return User::with('coachingDisciplines')
+            ->select('id','first_name','last_name','home_timezone','profile_pic_url','page_slug','zip')
+            ->where([
+                ['is_coach',true],
+                ['is_active',true]
+            ])
+            ->paginate(20);
     }
     //
     public function getFullPageBiographyFromSlug($slug)
     {
-         $coach = User::
+         return User::
             with('coachingDisciplines','coachingCredentials','club','userType')
              ->select(
                  'first_name',
@@ -58,7 +56,6 @@ class CoachController extends Controller
                 ['is_active',true]
             ])
             ->first();
-        return $coach;
     }
     //
     public function getFullPageBiographyFromSlug_web($slug)

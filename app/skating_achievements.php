@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class skating_credentials extends Model
+class skating_achievements extends Model
 {
     protected $hidden = array('pivot','created_at','updated_at','is_active');
 
     //
     public function skills()
     {
-        return $this->belongsToMany(skating_skills::class,'skating_credentials_skills','credential_id','skill_id')->select(['skating_skills.id','name','resource_url']);
+        return $this->belongsToMany(skating_skills::class,'skating_achievements_skills','achievement_id','skill_id')->select(['skating_skills.id','name','resource_url']);
     }
     public function program()
     {

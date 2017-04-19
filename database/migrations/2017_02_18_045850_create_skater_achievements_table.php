@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkaterCredentialsTable extends Migration
+class CreateSkaterAchievementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSkaterCredentialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skater_credentials', function (Blueprint $table) {
+        Schema::create('skater_achievements', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('credential_id');
+            $table->unsignedInteger('achievement_id');
             $table->unsignedInteger('skater_id');
             $table->boolean('show_on_profile')->nullable()->default(false);//for coaches only
             $table->date('date_earned');
@@ -25,9 +25,9 @@ class CreateSkaterCredentialsTable extends Migration
             $table->timestamps();
             //
             //
-            $table->foreign('credential_id')->references('id')->on('skating_credentials');
+            $table->foreign('achievement_id')->references('id')->on('skating_achievements');
             $table->foreign('skater_id')->references('id')->on('users');
-            $table->unique(['credential_id','skater_id']);
+            $table->unique(['achievement_id','skater_id']);
 
         });
     }
@@ -39,6 +39,6 @@ class CreateSkaterCredentialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skater_credentials');
+        Schema::dropIfExists('skater_achievements');
     }
 }
