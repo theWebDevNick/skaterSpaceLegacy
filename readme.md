@@ -11,3 +11,4 @@
 6. Run **php artisan passport:install**.
 7. Run **php artisan passport:client --password** to enable password token grant through web/mobile app
 8. Run **php artisan passport:client --personal** to enable token generation though the API user registration endpoint. This Personal Access Client MUST BE NAMED "register"
+

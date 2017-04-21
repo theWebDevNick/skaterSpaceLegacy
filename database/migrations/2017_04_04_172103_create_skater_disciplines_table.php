@@ -20,7 +20,7 @@ class CreateSkaterDisciplinesTable extends Migration
             $table->boolean('is_coaching')->default(false);
             $table->timestamps();
             $table->primary(['skater_id','discipline_id']);
-            $table->foreign('skater_id')->references('id')->on('Users');
+            $table->foreign('skater_id')->references('id')->on('users');
             $table->foreign('discipline_id')->references('id')->on('skating_disciplines');
 
         });

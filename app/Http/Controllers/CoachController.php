@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CoachSearchRequest;
+use App\Http\Requests\UpdateMyBiographyRequest;
+use App\Http\Requests\UpdateProfilePictureRequest;
 use App\User;
 use App\user_types;
 use App\skater_achievements;
 use App\skating_achievements;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CoachController extends Controller
 {
@@ -80,5 +83,22 @@ class CoachController extends Controller
             ->first();
 
         return view('coachProfile',['coach'=>$coach]);
+    }
+
+    public function UpdateMyProfilePicture(UpdateProfilePictureRequest $request)
+    {
+
+        $user = User::find(Auth::user()->id);
+        $user->profile_pic_url = $request->file('profile')->store('');
+        $user->save();
+        return response()->json(['profile_pic_url'=> $user->profile_pic_url]);
+    }
+    public function UpdateMyBiography(UpdateMyBiographyRequest $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->bio = $request['biography'];
+        $user->save();
+        return response()->json(['success'=> 'Coach biography updated.']);
+
     }
 }

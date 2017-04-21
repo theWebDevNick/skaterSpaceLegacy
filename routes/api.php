@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 */
 /*--USER API ROUTES---*/
 //register new User with API
-Route::post('/register','UserController@generateUserViaAPI');
+Route::post('/register','UserController@generateUserViaAPI');//done
 
 /*---SKATING ACHIEVEMENT ROUTES ---*/
 Route::get('achievements','AchievementController@index');
@@ -38,9 +38,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::delete('coach/students/{student}','CoachController@RemoveStudent');
     Route::post('coach/students/verify','CoachController@VerifyCoachingRelationship');
     Route::patch('coach/students/relationships','CoachController@UpdateCoachingRelationship');
-
-    Route::patch('coach/profile/pic','CoachController@UpdateMyProfilePicture');
-    Route::patch('coach/profile/biography','CoachController@UpdateMyBiography');
+    Route::patch('coach/profile/biography','CoachController@UpdateMyBiography');//done
+    Route::patch('coach/profile/pic','CoachController@UpdateMyProfilePicture');//done
 
 });
 

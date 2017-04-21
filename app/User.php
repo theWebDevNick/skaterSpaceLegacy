@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password', 'zip','is_coach','region','municipality','latitude','longitude','home_timezone','email_token'
+        'first_name','last_name', 'email', 'password', 'zip','is_coach','region','municipality','latitude','longitude','home_timezone','email_token','page_slug'
     ];
 
     /**
@@ -71,6 +71,11 @@ class User extends Authenticatable
                 ['show_on_profile',true]
             ]);
     }//
+
+    public function skatingAchievements()
+    {
+        return $this->belongsToMany(skating_achievements::class,'skater_achievements','skater_id','achievement_id');
+    }
     public function club()
     {
         return $this->hasOne(skating_clubs::class,'id','home_club')->select('id','name','short_name');

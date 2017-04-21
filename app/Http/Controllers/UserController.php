@@ -43,11 +43,13 @@ class UserController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'is_coach'=>$data['is_coach'],
             'password' => bcrypt($data['password']),
             'zip'=>$data['zip'],
             'is_coach'=>$data['is_coach'],
             'email_token' =>$token
         );
+        //
         //
         //Get location information
         $key=config('app.geocodioAPIKey');
@@ -75,6 +77,36 @@ class UserController extends Controller
             $newUser['longitude'] = $lng;
             $newUser['home_timezone'] = $timezone;
         }//if Geocodio returned
+
+        //Generate Coach page slug, if they are a coach
+        if($data['is_coach'])
+        {//if coach
+            $newUser['user_type']=2;
+            $slug ="{$data['first_name']}_{$data['last_name']}";
+            if (!empty($newUser['region']))
+            {
+                $slug.="_{$newUser['region']}";
+            }
+            //
+            //Checks for page_slug collisions
+            $count = User::where('page_slug','like',$slug.'%')->count();
+
+            if ($count==0)
+            {
+                //no collisions
+                $newUser['page_slug']=$slug;
+            }
+            else
+            {
+                //collisions
+                $newUser['page_slug']=$slug.'_'.($count+1);
+            }
+        }
+        else
+        {
+            //
+            $newUser['user_type']=1;
+        }
 
         //create the user
         $user = User::create($newUser);//creates user
@@ -107,13 +139,14 @@ class UserController extends Controller
                 ]);
             }
         }
+
         //
         //Now send email to welcome user and validate email
-        /*$name = "{$user->first_name} {$user->last_name}";
+        $name = "{$user->first_name} {$user->last_name}";
         $tokenRoute=route('verifyEmail',$token);
         Mail::to($user)->send(new UserEmailValidation($name,$tokenRoute));
         $user->email_sent = Carbon::now();
-        $user->save();*/
+        $user->save();
         $token = $user->createToken('register')->accessToken;
         return response()->json(['access_token'=>$token]);
     }
