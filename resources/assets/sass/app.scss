@@ -1,39 +1,72 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
 @import "variables";
-@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-.login-page
-{
-  margin-top: -20px;
-  padding-top: 10px;
-  background-color: $bg-blue-2;
-}
-.login-page h1 {
-  text-align: center;
-  color: #fff;
-}
-.lpfaded-enter-active, .lpfaded-leave-active
-  {
-  z-index:100000;
-  transition: all .5s ease;
-  opacity:1;
-}
-.lpfaded-enter, .lpfaded-leave-to {
-  z-index:100000;
-  opacity: 0;
-}
-.navigation
-{
-  position:relative;
-  z-index: 1000;
-}
+// Variables
+@import "mdb/free/data/colors";
+@import "mdb/free/data/variables-b4";
+@import "mdb/free/data/variables";
 
-.hidden-initially
-{
-  display:none;
-  margin-bottom: 30px;
-}
+// MDB Framework //
 
+// Mixins
+@import "mdb/free/data/prefixer";
+@import "mdb/free/data/mixins";
+
+
+
+//Global
+@import "mdb/free/global";
+
+// MDB Free
+@import "mdb/free/roboto";
+@import "mdb/free/typography";
+@import "mdb/free/animations";
+@import "mdb/free/waves";
+@import "mdb/free/helpers";
+@import "mdb/free/buttons";
+@import "mdb/free/forms-basic";
+@import "mdb/free/cards-basic";
+@import "mdb/free/navbars";
+@import "mdb/free/hover-effects";
+@import "mdb/free/footer";
+@import "mdb/free/carousels-basic";
+@import "mdb/free/modals";
+
+// MDB Premium
+@import "mdb/pro/forms-pro";
+@import "mdb/pro/tabs";
+@import "mdb/pro/msc";
+@import "mdb/pro/progress";
+@import "mdb/pro/accordion";
+@import "mdb/pro/buttons-pro";
+@import "mdb/pro/social-buttons";
+@import "mdb/pro/cards-pro";
+@import "mdb/pro/dropdowns-pro";
+@import "mdb/pro/light-box";
+@import "mdb/pro/side-nav";
+@import "mdb/pro/navbars-pro";
+@import "mdb/pro/carousels-pro";
+@import "mdb/pro/modals-pro";
+@import "mdb/pro/toasts";
+@import "mdb/pro/scrollspy";
+@import "mdb/pro/charts-pro";
+@import "mdb/pro/animations-pro";
+@import "mdb/pro/scrollbar";
+@import "mdb/pro/ecommerce";
+@import "mdb/pro/skins";
+@import "mdb/pro/chips";
+@import "mdb/pro/parallax";
+@import "mdb/pro/stepper";
+
+// DATE & TIME PICKERS
+@import "mdb/pro/date_picker/default";
+@import "mdb/pro/date_picker/default.date";
+@import "mdb/pro/date_picker/default.time";
+
+// SECTIONS
+@import "mdb/pro/sections/blog";
+@import "mdb/pro/sections/magazine";
+@import "mdb/pro/sections/pricing";
+@import "mdb/pro/sections/testimonials";
+@import "mdb/pro/sections/features";
+@import "mdb/pro/sections/team";
+@import "mdb/pro/sections/templates";
+@import "mdb/pro/sections/social";

@@ -10,6 +10,9 @@ use App\skating_achievements;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/app', function () {
+    return view('webAppShell');
+});
 
 /*---Auth Route Over-rides---*/
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('getLogout');//because default uses POST
@@ -41,7 +44,4 @@ Route::patch('/practice/edit','PracticeController@editForm')->name('editPractice
 
 
 
-Route::get('/app', function () {
-    return view('webApp');
-});
 Auth::routes();
