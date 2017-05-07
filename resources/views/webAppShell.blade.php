@@ -27,7 +27,10 @@
 <body  style="background-image:url('/img/heartSkate.jpg');background-size: cover;">
 <div id="app" class="fixed-sn light-blue-skin">
     <skaterspace-nav></skaterspace-nav>
-    <router-view class="container"></router-view>
+    <main>
+        <router-view class="container-fluid"></router-view>
+    </main>
+
 </div>
 <script src="/js/app.js"></script>
 </body>

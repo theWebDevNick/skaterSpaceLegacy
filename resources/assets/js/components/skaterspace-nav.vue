@@ -44,7 +44,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-paw"></i> Resources<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Resources<i class="fa fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="#" class="waves-effect">How to protect?</a>
@@ -98,7 +98,7 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
 
                 <li class="nav-item ">
-                    <a class="nav-link"> <span class="badge red z-depth-1">2</span> <i class="fa fa-shopping-envelope"></i> <span class="hidden-sm-down">Messages</span></a>
+                    <a class="nav-link"> <span class="badge red z-depth-1">2</span> <i class="fa fa-envelope"></i> <span class="hidden-sm-down">Messages</span></a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
