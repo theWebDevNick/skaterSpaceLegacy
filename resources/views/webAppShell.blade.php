@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Skater.Space') }}</title>
     <meta name="description" content="The best coaching and skating app in the world of figure skating.">
     <meta name="description" content="">
     <!-- CSRF Token -->
@@ -17,18 +17,18 @@
     <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#28c0d5">
-
     <meta name="apple-mobile-web-app-title" content="Skater.Space">
     <meta name="application-name" content="Skater.Space">
     <meta name="theme-color" content="#1c4888">
+    <link rel="stylesheet"  href="/css/font-awesome.min.css">
     <link rel="stylesheet"  href="/css/bootstrap.min.css">
     <link rel="stylesheet"  href="/css/app.css">
 </head>
-<body>
-<div id="app"  v-bind:class="{ 'login-page': ['login'].indexOf($route.name) >-1 }" >
-    <router-view></router-view>
+<body  style="background-image:url('/img/heartSkate.jpg');background-size: cover;">
+<div id="app" class="fixed-sn light-blue-skin">
+    <skaterspace-nav></skaterspace-nav>
+    <router-view class="container"></router-view>
 </div>
 <script src="/js/app.js"></script>
-
 </body>
 </html>
