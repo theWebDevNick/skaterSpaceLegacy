@@ -27,7 +27,7 @@
         .loading-page{text-align:center;background-color:#070659;color:#fff;position:absolute;top:0;bottom:0;left:0;right:0;z-index:10000;padding-top:30%}.loading-page img{margin:20px;-webkit-animation-name:spin;-webkit-animation-duration:8s;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:linear;-moz-animation-name:spin;-moz-animation-duration:8s;-moz-animation-iteration-count:infinite;-moz-animation-timing-function:linear;-ms-animation-name:spin;-ms-animation-duration:8s;-ms-animation-iteration-count:infinite;-ms-animation-timing-function:linear;animation-name:spin;animation-duration:8s;animation-iteration-count:infinite;animation-timing-function:linear}@-ms-keyframes spin{from{-ms-transform:rotate(0)}to{-ms-transform:rotate(360deg)}}@-moz-keyframes spin{from{-moz-transform:rotate(0)}to{-moz-transform:rotate(360deg)}}@-webkit-keyframes spin{from{-webkit-transform:rotate(0)}to{-webkit-transform:rotate(360deg)}}@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
     </style>
 </head>
-<body  style="background-image:url('/img/heartSkate.jpg');background-size: cover;">
+<body  style="background-color:black;background-image:url('/img/heartSkate.jpg');background-size: cover;">
 <div id="app" class="fixed-sn light-blue-skin">
     @include('partials.webAppLoadingScreen')
     <skaterspace-nav></skaterspace-nav>
