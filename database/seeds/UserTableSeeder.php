@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder
             ],
             [
 
-                'first_name'=>'Larene',
+                'first_name'=>'Laurene',
                 'last_name'=>'Daisy',
                 'home_club'=>1,
                 'email'=>'rene@example.com',

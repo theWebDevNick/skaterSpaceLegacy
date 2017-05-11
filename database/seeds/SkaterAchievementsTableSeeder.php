@@ -37,6 +37,12 @@ class SkaterAchievementsTableSeeder extends Seeder
                 'skater_id'=>2,
                 'show_on_profile'=>true,
                 'date_earned'=>'2017-01-01'
+            ],
+            [
+                'achievement_id'=>3,
+                'skater_id'=>2,
+                'show_on_profile'=>true,
+                'date_earned'=>'2017-01-01'
             ]
         ]);
     }

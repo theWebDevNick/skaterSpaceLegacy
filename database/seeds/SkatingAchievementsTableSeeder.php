@@ -20,7 +20,17 @@ class SkatingAchievementsTableSeeder extends Seeder {
                 'is_coaching_credential'=>false,
             ],
             [
-                'name'=>'LTS Instructor Rating (TEST)',
+                'name'=>'LTS Instructor Rating',
+                'skating_level'=>1,
+                'program_id'=>1,
+                'granting_org'=>1,
+                'require_skills_completion'=>false,
+                'expires'=>false,
+                'is_active'=>true,
+                'is_coaching_credential'=>true,
+            ],
+            [
+                'name'=>'PSA Master Rating',
                 'skating_level'=>1,
                 'program_id'=>1,
                 'granting_org'=>1,

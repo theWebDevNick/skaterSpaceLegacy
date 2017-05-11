@@ -30,7 +30,17 @@ class SkaterDisciplinesTableSeeder extends Seeder
             [
                'skater_id'=>2,
                'discipline_id'=>5,
-               'is_coaching'=>false
+               'is_coaching'=>true
+           ],
+            [
+               'skater_id'=>2,
+               'discipline_id'=>1,
+               'is_coaching'=>true
+           ],
+            [
+               'skater_id'=>2,
+               'discipline_id'=>3,
+               'is_coaching'=>true
            ],
         ]);
     }

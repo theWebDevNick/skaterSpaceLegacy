@@ -10,6 +10,8 @@ new Vue({
 // SideNav Initialization
 // SideNav init
 var Ps = require('./mdb-requirements/modules/scrollbar');
-$(".button-collapse").sideNav();
+$(".button-collapse").sideNav({
+    closeOnClick: true,
+});
 var el = document.querySelector('.custom-scrollbar');
 Ps.initialize(el);
