@@ -149,10 +149,9 @@ let routes =
     ];
 
 export default new VueRouter({
+    mode: 'history',
+    base: '/app',
     routes,
     linkActiveClass: 'active',
-   /* root: '/app',
     hashbang: false,
-    mode: 'history'
-    */
 });

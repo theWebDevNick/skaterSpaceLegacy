@@ -5,14 +5,13 @@
 | Web Routes
 |--------------------------------------------------------------------------
 */
-use App\skating_achievements;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/app', function () {
+Route::get('app/{vue_capture?}', function() {
     return view('webAppShell');
-});
+})->where('vue_capture', '[\/\w\.-]*');
 
 /*---Auth Route Over-rides---*/
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('getLogout');//because default uses POST

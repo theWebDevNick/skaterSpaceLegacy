@@ -76,3 +76,50 @@ main
 {
   min-height: 100vh;
 }
+body
+{
+  background-color: black;
+  background-size:cover;
+  background-image:url('/img/heartSkate-xs.jpg');
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  body
+  {
+    background-image:url('/img/heartSkate-sm.jpg');
+
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  body
+  {
+    background-image:url('/img/heartSkate-md.jpg');
+
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  body
+  {
+    background-image:url('/img/heartSkate-lg.jpg');
+
+  }
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  body
+  {
+    background-image:url('/img/heartSkate.jpg');
+    background-position: bottom;
+
+  }
+
+}
