@@ -66,11 +66,23 @@
         }
 
         // if closeOnClick, then add close event for all a tags in side sideNav
-        if (options.closeOnClick === true) {
+        if (options.closeOnClick === true && window.innerWidth <= 1440) {
           menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
             removeMenu();
           });
         }
+          //manual fix by Nick to address sidenav bug. This block of code adds/removes the closeOnClick after screen resize
+          $(window).resize(function() {
+              if (options.closeOnClick === true && window.innerWidth <= 1440) {
+                  menu_id.on("click.itemclick", "a:not(.collapsible-header)", function(){
+                      removeMenu();
+                  });
+              }
+              else
+              {
+                menu_id.off("click.itemclick", "a:not(.collapsible-header)");
+              }
+          });
 
         function removeMenu(restoreNav) {
           panning = false;

@@ -41,7 +41,7 @@ class CoachController extends Controller
     //
     public function getFullPageBiographyFromSlug($slug)
     {
-         return User::
+         $coach= User::
             with('coachingDisciplines','coachingCredentials','club','userType')
              ->select(
                  'first_name',
@@ -59,6 +59,14 @@ class CoachController extends Controller
                 ['is_active',true]
             ])
             ->first();
+         if ($coach)
+         {
+             return $coach;
+         }
+         else
+         {
+            return  abort(404);
+         }
     }
     //
     public function getFullPageBiographyFromSlug_web($slug)

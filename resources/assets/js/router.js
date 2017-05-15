@@ -16,12 +16,12 @@ let routes =
             name: "practiceIndex"
         },
         {
-            path: '/practice/history',
+            path: '/practiceHistory',
             component: require('./views/PracticeHistory.vue'),
             name: "practiceHistory"
         },
         {
-            path: '/practice/checklists',
+            path: '/practiceChecklists',
             component: require('./views/PracticeChecklists.vue'),
             name: "practiceChecklists"
         },
@@ -31,23 +31,23 @@ let routes =
             name: "lessonsIndex"
         },
         {
-            path: '/lessons/schedule',
+            path: '/cheduleLessons',
             component: require('./views/LessonsSchedule.vue'),
             name: "scheduleLessons"
         },
 
         {
-            path: '/coach',
+            path: '/coaches',
             component: require('./views/CoachIndex.vue'),
             name: "coachIndex"
         },
         {
-            path: '/coach/search',
+            path: '/coachSearch',
             component: require('./views/CoachSearch.vue'),
             name: "coachSearch"
         },
         {
-            path: '/coach/:id',
+            path: '/coach/:slug',
             component: require('./views/CoachProfile.vue'),
             name: "coachProfile"
         },
@@ -77,22 +77,22 @@ let routes =
             name: "credits"
         },
         {
-            path: '/events/competitions',
+            path: '/eventsCompetition',
             component: require('./views/EventsCompetitions.vue'),
             name: "eventsCompetition"
         },
         {
-            path: '/events/testing',
+            path: '/eventsTesting',
             component: require('./views/EventsTesting.vue'),
             name: "eventsTesting"
         },
         {
-            path: '/events/clinics',
+            path: '/eventsClinic',
             component: require('./views/EventsClinics.vue'),
             name: "eventsClinic"
         },
         {
-            path: '/events/other',
+            path: '/eventsOther',
             component: require('./views/EventsOther.vue'),
             name: "eventsOther"
         },
@@ -102,17 +102,17 @@ let routes =
             name: "swapIndex"
         },
         {
-            path: '/swap/post',
+            path: '/swapPost',
             component: require('./views/SwapPost.vue'),
             name: "swapPost"
         },
         {
-            path: '/swap/local',
+            path: '/swapLocal',
             component: require('./views/SwapLocal.vue'),
             name: "swapLocal"
         },
         {
-            path: '/swap/bookstore',
+            path: 'swapBookstore',
             component: require('./views/SwapBookstore.vue'),
             name: "swapBookstore"
         },
@@ -141,10 +141,18 @@ let routes =
             component: require('./views/privacy.vue'),
             name: "privacy"
         },
+        {
+            path: '/credentials/:id',
+            component: require('./views/credentials.vue'),
+            name: "creds"
+        },
     ];
 
 export default new VueRouter({
     routes,
     linkActiveClass: 'active',
-    //mode: 'history' //TODO: remove for HTML5 history mode--laravel require configuration
+   /* root: '/app',
+    hashbang: false,
+    mode: 'history'
+    */
 });
