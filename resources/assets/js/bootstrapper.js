@@ -9,6 +9,7 @@ window.axios =axios;
 window.axios.defaults.headers.common={
     'X-requested-With':'XMLHttpRequest'
 };
+require('./mdb-requirements/bootstrap');
 require('./mdb-requirements/modules/animations');
 require('./mdb-requirements/modules/autocomplete');
 require('./mdb-requirements/modules/buttons');
