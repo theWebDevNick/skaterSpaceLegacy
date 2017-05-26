@@ -19,6 +19,7 @@ class CreatePersonalPracticesTable extends Migration
             $table->dateTime('start_time');
             $table->integer('duration_minutes');
             $table->text('practice_notes')->nullable();
+            $table->integer('points')->default(0);//point value is the duration_minutes*10 + sum of skill point_value from skills in lesson_tags pivot table
             $table->boolean('is_deleted');
             $table->timestamps();
             //

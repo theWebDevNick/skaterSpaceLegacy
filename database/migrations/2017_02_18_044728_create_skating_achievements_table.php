@@ -19,6 +19,7 @@ class CreateSkatingAchievementsTable extends Migration
             $table->unsignedInteger('skating_level')->nullable();
             $table->unsignedInteger('program_id')->nullable();
             $table->unsignedInteger('granting_org')->nullable();
+            $table->integer('progression')->nullable();
             $table->boolean('require_skills_completion')->default(true);
             $table->boolean('is_coaching_credential')->default(false);
             $table->boolean('expires')->default(false);
