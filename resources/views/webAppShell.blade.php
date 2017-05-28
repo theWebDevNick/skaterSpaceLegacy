@@ -31,7 +31,7 @@
 <body >
 <div id="app" class="fixed-sn navy-blue-skin" >
     @include('partials.webAppLoadingScreen')
-    <skaterspace-nav></skaterspace-nav>
+    <skaterspace-nav v-show= "this.$root.$data.auth.user"></skaterspace-nav>
     <main>
         <router-view class="container-fluid">
         </router-view>

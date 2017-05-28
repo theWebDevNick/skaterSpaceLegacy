@@ -1,41 +1,53 @@
 <template>
-    <div class="box">
-        <article class="media">
-            <div class="media-left">
-                <figure class="image is-64x64">
-                    <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
-                </figure>
-            </div>
-            <div class="media-content">
-                <div class="content">
-                    <p>
-                        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                        <br>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                    </p>
-                </div>
-                <nav class="level">
-                    <div class="level-left">
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-                        </a>
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-                        </a>
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                        </a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="form-header  purple darken-4">
+                        <h3><i class="fa fa-lock"></i> Login:</h3>
                     </div>
-                </nav>
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" id="form2" class="form-control">
+                        <label for="form2">Your email</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" id="form4" class="form-control">
+                        <label for="form4">Your password</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-deep-purple">Login</button>
+                    </div>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options">
+                        <p>Not a member? <a href="#">Sign Up</a></p>
+                        <p>Forgot <a href="#">Password?</a></p>
+                    </div>
+                </div>
+
             </div>
-        </article>
+        </div>
     </div>
+
+</div>
 </template>
 <script>
     export default {
     mounted()
-{
-    console.log('Mounted dash');
-}
+    {
+        console.log('Mounted login');
+    }
 }
 </script>

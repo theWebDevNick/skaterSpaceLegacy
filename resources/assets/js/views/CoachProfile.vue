@@ -72,7 +72,7 @@
         },
         created(){
             axios.get('/api/coach/'+this.$route.params.slug)
-                .then(({data})=>{this.coach=data;console.log(data)},(error)=>this.hasError=true)
+                .then(({data})=>this.coach=data,(error)=>this.hasError=true)
 
         }
     }

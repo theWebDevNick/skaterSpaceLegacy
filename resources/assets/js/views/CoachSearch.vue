@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<d-iv class="row">
     <div class="col-md-8 offset-md-2">
         <div class="card mt-1">
             <div class="card-block">
@@ -28,11 +28,12 @@
 
                 <div class="text-center">
                     <button class="btn btn-deep-purple">Search Coaches</button>
+                    <router-link :to="{name:'allCoaches'}" class="btn btn-deep-purple">Show All Coaches</router-link>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</d-iv>
 </template>
 <script>
     export default {
@@ -41,7 +42,7 @@
         },
         data(){
             return {
-                searchName:"Hola",
+                searchName:null,
                 hasError:false
             }
         }
