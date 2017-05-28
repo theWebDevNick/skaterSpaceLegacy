@@ -10,9 +10,17 @@ class SkatingProgramsTableSeeder extends Seeder {
 	{
         DB::table('skating_programs')->insert([
 
-                [
-                    'name'=>'Learn To Skate',
-                    'administered_by'=>1,
+                [//1
+                    'name'=>'Learn To Skate Basic Skills',
+                    'administered_by'=>4,
+                    'discipline_id'=>1,
+                    'is_coaching_track'=>false,
+                    'is_test_track'=>false,
+                    'is_introduction_track'=>true
+                ],
+                [//2
+                    'name'=>'Learn To Skate Adult Track',
+                    'administered_by'=>4,
                     'discipline_id'=>1,
                     'is_coaching_track'=>false,
                     'is_test_track'=>false,

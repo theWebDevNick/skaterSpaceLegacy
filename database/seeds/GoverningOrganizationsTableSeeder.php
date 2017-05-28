@@ -13,7 +13,7 @@ class GoverningOrganizationsTableSeeder extends Seeder
     {
         //
         DB::table('governing_organizations')->insert([
-            [
+            [//1
                 'name'=>'United States Figure Skating Association',
                 'short_name'=>'USFSA',
                 'website'=>'http://www.usfigureskating.org/',
@@ -23,7 +23,7 @@ class GoverningOrganizationsTableSeeder extends Seeder
                 'municipality'=>'Colorado Springs',
                 'street_address'=>'20 First Street'
            ],
-            [
+            [//2
                 'name'=>'International Skating Union',
                 'short_name'=>'ISU',
                 'website'=>'www.isu.org',
@@ -33,7 +33,7 @@ class GoverningOrganizationsTableSeeder extends Seeder
                 'municipality'=>'Lausanne',
                 'street_address'=>'Avenue Juste-Olivier 17'
             ],
-            [
+            [//3
                 'name'=>'Professional Skater\'s Association',
                 'short_name'=>'PSA',
                 'website'=>'www.skatepsa.com/',
@@ -42,8 +42,17 @@ class GoverningOrganizationsTableSeeder extends Seeder
                 'postal'=>'55902',
                 'municipality'=>'Rochester',
                 'street_address'=>'3006 Allegro Park Ln SW'
-            ]
-
+            ],
+            [//4
+                'name'=>'Learn To Skate USA',
+                'short_name'=>'LTS',
+                'website'=>'https://www.learntoskateusa.com/',
+                'country'=>'USA',
+                'region'=>'CO',
+                'postal'=>'80937',
+                'municipality'=>'Colorado Springs',
+                'street_address'=>' P.O. Box 38820'
+            ],
         ]);
     }
 }

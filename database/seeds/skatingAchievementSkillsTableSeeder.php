@@ -13,6 +13,7 @@ class skatingAchievementSkillsTableSeeder extends Seeder
     {
         //
         DB::table('skating_achievement_skills')->insert([
+            //LTS Basic 1
             [
                 'achievement_id'=>1,
                 'skill_id'=>1,
@@ -48,16 +49,274 @@ class skatingAchievementSkillsTableSeeder extends Seeder
                 'skill_id'=>7,
                 'display_order'=>7
             ],
-            [
+            [//bonus skill
                 'achievement_id'=>1,
                 'skill_id'=>8,
                 'display_order'=>8
             ],
+            //LTS Basic 2
             [
-                'achievement_id'=>1,
+                'achievement_id'=>2,
                 'skill_id'=>9,
-                'display_order'=>9
-            ]
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>10,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>11,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>12,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>13,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>14,
+                'display_order'=>6
+            ],
+            [
+                'achievement_id'=>2,
+                'skill_id'=>15,
+                'display_order'=>7
+            ],
+            [//bonus skill
+                'achievement_id'=>2,
+                'skill_id'=>16,
+                'display_order'=>8
+            ],
+
+            //LTS Basic 3
+            [
+                'achievement_id'=>3,
+                'skill_id'=>17,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>3,
+                'skill_id'=>18,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>3,
+                'skill_id'=>19,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>3,
+                'skill_id'=>20,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>3,
+                'skill_id'=>21,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>3,
+                'skill_id'=>22,
+                'display_order'=>6
+            ],
+            [//bonus skill
+                'achievement_id'=>3,
+                'skill_id'=>23,
+                'display_order'=>7
+            ],
+
+            //LTS Basic 4
+            [
+                'achievement_id'=>4,
+                'skill_id'=>24,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>4,
+                'skill_id'=>25,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>4,
+                'skill_id'=>26,
+                'display_order'=>3
+            ],
+             [
+                'achievement_id'=>4,
+                'skill_id'=>27,
+                'display_order'=>4
+            ],
+
+             [
+                'achievement_id'=>4,
+                'skill_id'=>28,
+                'display_order'=>5
+            ],
+
+             [
+                'achievement_id'=>4,
+                'skill_id'=>29,
+                'display_order'=>6
+            ],
+
+             [//bonus skill
+                'achievement_id'=>4,
+                'skill_id'=>30,
+                'display_order'=>7
+            ],
+
+            //LTS Basic 5
+            [
+                'achievement_id'=>5,
+                'skill_id'=>31,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>5,
+                'skill_id'=>32,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>5,
+                'skill_id'=>33,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>5,
+                'skill_id'=>34,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>5,
+                'skill_id'=>35,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>5,
+                'skill_id'=>36,
+                'display_order'=>6
+            ],
+            [//bonus skill
+                'achievement_id'=>5,
+                'skill_id'=>37,
+                'display_order'=>7
+            ],
+            //LTS Basic 6
+            [
+                'achievement_id'=>6,
+                'skill_id'=>38,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>39,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>40,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>41,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>42,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>43,
+                'display_order'=>6
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>44,
+                'display_order'=>7
+            ],
+            [
+                'achievement_id'=>6,
+                'skill_id'=>45,
+                'display_order'=>8
+            ],
+            //Adult 1
+            [
+                'achievement_id'=>7,
+                'skill_id'=>46,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>2,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>3,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>5,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>12,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>4,
+                'display_order'=>6
+            ],
+            [
+                'achievement_id'=>7,
+                'skill_id'=>15,
+                'display_order'=>7
+            ],
+            //Adult 2
+            [
+                'achievement_id'=>8,
+                'skill_id'=>47,
+                'display_order'=>1
+            ],
+            [
+                'achievement_id'=>8,
+                'skill_id'=>10,
+                'display_order'=>2
+            ],
+            [
+                'achievement_id'=>8,
+                'skill_id'=>22,
+                'display_order'=>3
+            ],
+            [
+                'achievement_id'=>8,
+                'skill_id'=>48,
+                'display_order'=>4
+            ],
+            [
+                'achievement_id'=>8,
+                'skill_id'=>13,
+                'display_order'=>5
+            ],
+            [
+                'achievement_id'=>8,
+                'skill_id'=>14,
+                'display_order'=>6
+            ],
 
         ]);
     }
