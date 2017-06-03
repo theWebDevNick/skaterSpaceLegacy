@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 */
 /*--USER API ROUTES---*/
 //register new User with API
+
+Route::post('/webAppLogin','UserController@loginToWebApp');//done
 Route::post('/register','UserController@generateUserViaAPI');//done
+Route::get('/user','UserController@getCurrentUserData')->middleware('auth:api');//
+Route::post('/user/login','UserController@loginToWebApp');//
 
 /*---SKATING ACHIEVEMENT ROUTES ---*/
 Route::get('achievements','AchievementController@index');

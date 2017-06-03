@@ -1,16 +1,18 @@
 /**
  * Created by nick on 5/25/17.
  */
+import axios from 'axios';
+
 class authService
 {
    constructor()
    {
-       localStorage.setItem('TEST', 'TEST VALUE');
        this.token = this.getTokenFromStore();
        this.user=this.getUserFromLocalStore();//initialized empty values
        this.offlineMode = false;//default value
        this.isLoggedIn();//if the user is logged in, the use details will be fetched to populate this.user
    }
+
    //
     isLoggedIn()
     {
@@ -65,6 +67,8 @@ class authService
             let accessToken = localStorage.getItem("skaterSpace_access_token");
             if (accessToken)
             {
+                axios.defaults.headers.common['Authorization']='Bearer '+accessToken;
+
                 return {
                     access:accessToken
                 };
@@ -101,7 +105,11 @@ class authService
     }
     getUserFromServer()
     {
-
+        axios.get('/api/user')
+            .then(response => {
+                this.putUserInLocalStorage(response.data);
+                return response.data;
+            });
     }
 
     putUserInLocalStorage(userObject)
@@ -119,6 +127,27 @@ class authService
         }//if localStorage is available
     }
 
+    makeLoginRequest(username, password)
+    {
+        axios.post('/api/user/login',
+            {'email':username,password})
+            .then(response => {
+                if (response.data.token)
+                {
+                    console.log(response.data.token);
+                    this.putTokenInLocalStorage(response.data.token);
+                    axios.defaults.headers.common['Authorization']='Bearer '+response.data.token;
+                    this.getUserFromServer(response.data.token);
+                }
+                else
+                {
+                    console.log('Login Failed');
+                }
+
+            });
+
+    }
+
 
 }
 
@@ -129,6 +158,17 @@ export function requireAuth(to, from, next) {
         next({
             path: '/login',
             query: { redirect: to.fullPath }
+        });
+    } else {
+        next();
+    }
+}
+
+export function requireNoAuth(to,from,next)
+{
+    if (Auth.isLoggedIn()) {
+        next({
+            path: '/'
         });
     } else {
         next();

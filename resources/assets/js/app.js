@@ -18,7 +18,11 @@ new Vue({
 
     el:'#app',
     router,
-    data:state
+    data:state,
+    created: function(){
+        let a = this.$root.$data.auth.isLoggedIn();
+        console.log(a);
+    }
 });
 
 // SideNav Initialization

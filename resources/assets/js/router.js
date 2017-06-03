@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router';
 import {requireAuth} from './utils/auth';
+import {requireNoAuth} from './utils/auth';
 let routes =
     [
         {
@@ -9,6 +10,7 @@ let routes =
         },
         {
             path: '/login',
+            beforeEnter:requireNoAuth,
             component: require('./views/Login.vue'),
             name: "login"
         },

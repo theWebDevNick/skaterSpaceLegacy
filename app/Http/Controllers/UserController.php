@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRegistrationThroughAPIRequest;
+use App\Http\Requests\webAppLoginRequest;
 use App\Mail\UserEmailValidation;
 use App\skater_disciplines;
 use App\User;
@@ -149,5 +150,26 @@ class UserController extends Controller
         $user->save();
         $token = $user->createToken('register')->accessToken;
         return response()->json(['access_token'=>$token]);
+    }
+    public function loginToWebApp(webAppLoginRequest $request)
+    {
+        $user = User::find(1);
+        $token = $user->createToken('webAppAccess')->accessToken;
+     //   return array('token'=> $token);
+
+        $response = new \Illuminate\Http\Response(array('token'=> $token));
+        $response->withCookie(cookie('laravel_token', $token, 45000));
+        return $response;
+       //return  $request;
+    }
+
+    public function getCurrentUserData()
+    {
+        return  auth()->user();
+    }
+    public function dumpAll()
+    {
+        echo '<pre>';
+        var_dump($_COOKIE);
     }
 }

@@ -1,14 +1,20 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import axios from 'axios';
+import VueRouter from 'vue-router';
 import Tether from 'tether';
+import VueCookie from 'vue-cookie';
+window.axios =axios;
+window.axios.defaults.headers.common = {
+    //'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest',
+    'Accept':'Application/json'
+};
+
 window.Tether =Tether;
 window.Vue = Vue;
 Vue.use(VueRouter);
-window.axios =axios;
-window.axios.defaults.headers.common={
-    'X-requested-With':'XMLHttpRequest'
-};
+Vue.use(VueCookie);
+
 require('./mdb-requirements/bootstrap');
 require('./mdb-requirements/modules/animations');
 require('./mdb-requirements/modules/autocomplete');

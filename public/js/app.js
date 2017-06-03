@@ -11246,7 +11246,10 @@ module.exports = function bind(fn, thisArg) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony export (immutable) */ __webpack_exports__["b"] = requireAuth;
+/* harmony export (immutable) */ __webpack_exports__["c"] = requireNoAuth;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11254,21 +11257,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Created by nick on 5/25/17.
  */
+
+
 var authService = function () {
     function authService() {
         _classCallCheck(this, authService);
 
-        localStorage.setItem('TEST', 'TEST VALUE');
         this.token = this.getTokenFromStore();
         this.user = this.getUserFromLocalStore(); //initialized empty values
         this.offlineMode = false; //default value
         this.isLoggedIn(); //if the user is logged in, the use details will be fetched to populate this.user
     }
+
     //
 
 
     _createClass(authService, [{
-        key: 'isLoggedIn',
+        key: "isLoggedIn",
         value: function isLoggedIn() {
             //to avoid unnecessary work, check if the user  & token props are defined (they both were loaded from local store)
             if (this.user && this.token) {
@@ -11310,11 +11315,13 @@ var authService = function () {
         //
 
     }, {
-        key: 'getTokenFromStore',
+        key: "getTokenFromStore",
         value: function getTokenFromStore() {
             if (typeof Storage !== "undefined") {
                 var accessToken = localStorage.getItem("skaterSpace_access_token");
                 if (accessToken) {
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+
                     return {
                         access: accessToken
                     };
@@ -11326,7 +11333,7 @@ var authService = function () {
             }
         }
     }, {
-        key: 'getUserFromLocalStore',
+        key: "getUserFromLocalStore",
         value: function getUserFromLocalStore() {
             if (typeof Storage !== "undefined") {
                 var user = localStorage.getItem("skaterSpace_user_object");
@@ -11341,21 +11348,44 @@ var authService = function () {
             }
         }
     }, {
-        key: 'getUserFromServer',
-        value: function getUserFromServer() {}
+        key: "getUserFromServer",
+        value: function getUserFromServer() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/user').then(function (response) {
+                _this.putUserInLocalStorage(response.data);
+                return response.data;
+            });
+        }
     }, {
-        key: 'putUserInLocalStorage',
+        key: "putUserInLocalStorage",
         value: function putUserInLocalStorage(userObject) {
             if (typeof Storage !== "undefined") {
                 localStorage.setItem('skaterSpace_user_object', JSON.stringify(userObject));
             } //if localStorage is available
         }
     }, {
-        key: 'putTokenInLocalStorage',
+        key: "putTokenInLocalStorage",
         value: function putTokenInLocalStorage(access) {
             if (typeof Storage !== "undefined") {
                 localStorage.setItem('skaterSpace_access_token', access);
             } //if localStorage is available
+        }
+    }, {
+        key: "makeLoginRequest",
+        value: function makeLoginRequest(username, password) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/user/login', { 'email': username, password: password }).then(function (response) {
+                if (response.data.token) {
+                    console.log(response.data.token);
+                    _this2.putTokenInLocalStorage(response.data.token);
+                    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
+                    _this2.getUserFromServer(response.data.token);
+                } else {
+                    console.log('Login Failed');
+                }
+            });
         }
     }]);
 
@@ -11369,6 +11399,16 @@ function requireAuth(to, from, next) {
         next({
             path: '/login',
             query: { redirect: to.fullPath }
+        });
+    } else {
+        next();
+    }
+}
+
+function requireNoAuth(to, from, next) {
+    if (Auth.isLoggedIn()) {
+        next({
+            path: '/'
         });
     } else {
         next();
@@ -13902,7 +13942,11 @@ new Vue({
 
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */],
-    data: state
+    data: state,
+    created: function created() {
+        var a = this.$root.$data.auth.isLoggedIn();
+        console.log(a);
+    }
 });
 
 // SideNav Initialization
@@ -15311,9 +15355,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    mounted: function mounted() {
-        console.log('Mounted login');
+    data: function data() {
+        return {
+            email: null,
+            password: null,
+            emailError: null,
+            passwordError: null,
+            success: null
+        };
+    },
+
+    methods: {
+        login: function login() {
+            this.$root.$data.auth.makeLoginRequest('foo@bao.com', 'bar');
+        },
+        tryUserData: function tryUserData(token) {
+            var _this = this;
+
+            var config = {
+                headers: { 'Authorization': 'Bearer ' + token }
+            };
+            axios.get('/api/user', config).then(function (response) {
+                console.log('Success');
+                console.log(response.data);
+                _this.$root.$data.auth.putUserInLocalStorage(response.data);
+            });
+        }
     }
+
 };
 
 /***/ }),
@@ -15444,22 +15513,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tether__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tether___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_tether__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_cookie__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_cookie___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_cookie__);
 
 
 
+
+
+window.axios = __WEBPACK_IMPORTED_MODULE_1_axios___default.a;
+window.axios.defaults.headers.common = {
+    //'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest',
+    'Accept': 'Application/json'
+};
 
 window.Tether = __WEBPACK_IMPORTED_MODULE_3_tether___default.a;
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
-window.axios = __WEBPACK_IMPORTED_MODULE_2_axios___default.a;
-window.axios.defaults.headers.common = {
-    'X-requested-With': 'XMLHttpRequest'
-};
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_cookie___default.a);
+
 __webpack_require__(63);
 __webpack_require__(64);
 __webpack_require__(65);
@@ -35187,12 +35264,14 @@ function scaleBannerVideoSize(element) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_auth__ = __webpack_require__(10);
 
 
+
 var routes = [{
     path: '/',
     beforeEnter: __WEBPACK_IMPORTED_MODULE_1__utils_auth__["b" /* requireAuth */],
     component: __webpack_require__(106)
 }, {
     path: '/login',
+    beforeEnter: __WEBPACK_IMPORTED_MODULE_1__utils_auth__["c" /* requireNoAuth */],
     component: __webpack_require__(113),
     name: "login"
 }, {
@@ -41610,45 +41689,69 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-xs-12 col-md-6 offset-md-3"
+    staticClass: "col-xs-12 col-md-6 offset-md-3  "
   }, [_c('div', {
     staticClass: "card"
   }, [_c('div', {
     staticClass: "card-block"
-  }, [_c('div', {
-    staticClass: "form-header  purple darken-4"
-  }, [_c('h3', [_c('i', {
-    staticClass: "fa fa-lock"
-  }), _vm._v(" Login:")])]), _vm._v(" "), _c('div', {
-    staticClass: "md-form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "md-form has-error"
   }, [_c('i', {
     staticClass: "fa fa-envelope prefix"
   }), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.email),
+      expression: "email"
+    }],
+    staticClass: "form-control validate",
     attrs: {
-      "type": "text",
-      "id": "form2"
+      "type": "email",
+      "id": "email_address"
+    },
+    domProps: {
+      "value": (_vm.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.email = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('label', {
     attrs: {
-      "for": "form2"
+      "for": "email_address"
     }
   }, [_vm._v("Your email")])]), _vm._v(" "), _c('div', {
     staticClass: "md-form"
   }, [_c('i', {
     staticClass: "fa fa-lock prefix"
   }), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.password),
+      expression: "password"
+    }],
+    staticClass: "form-control validate",
     attrs: {
       "type": "password",
       "id": "form4"
+    },
+    domProps: {
+      "value": (_vm.password)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.password = $event.target.value
+      }
     }
   }), _vm._v(" "), _c('label', {
     attrs: {
@@ -41657,8 +41760,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Your password")])]), _vm._v(" "), _c('div', {
     staticClass: "text-center"
   }, [_c('button', {
-    staticClass: "btn btn-deep-purple"
-  }, [_vm._v("Login")])])]), _vm._v(" "), _c('div', {
+    staticClass: "btn btn-deep-purple",
+    on: {
+      "click": _vm.login
+    }
+  }, [_vm._v("Login")])])]), _vm._v(" "), _vm._m(1)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "form-header  purple darken-4"
+  }, [_c('h3', [_c('i', {
+    staticClass: "fa fa-lock"
+  }), _vm._v(" Login:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "modal-footer"
   }, [_c('div', {
     staticClass: "options"
@@ -41670,7 +41784,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Password?")])])])])])])])])
+  }, [_vm._v("Password?")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -51550,6 +51664,256 @@ module.exports = g;
 
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
+
+
+/***/ }),
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * tiny-cookie - A tiny cookie manipulation plugin
+ * https://github.com/Alex1990/tiny-cookie
+ * Under the MIT license | (c) Alex Chao
+ */
+
+!(function(root, factory) {
+
+  // Uses CommonJS, AMD or browser global to create a jQuery plugin.
+  // See: https://github.com/umdjs/umd
+  if (true) {
+    // Expose this plugin as an AMD module. Register an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof exports === 'object') {
+    // Node/CommonJS module
+    module.exports = factory();
+  } else {
+    // Browser globals 
+    root.Cookie = factory();
+  }
+
+}(this, function() {
+
+  'use strict';
+
+  // The public function which can get/set/remove cookie.
+  function Cookie(key, value, opts) {
+    if (value === void 0) {
+      return Cookie.get(key);
+    } else if (value === null) {
+      Cookie.remove(key);
+    } else {
+      Cookie.set(key, value, opts);
+    }
+  }
+
+  // Check if the cookie is enabled.
+  Cookie.enabled = function() {
+    var key = '__test_key';
+    var enabled;
+
+    document.cookie = key + '=1';
+    enabled = !!document.cookie;
+
+    if (enabled) Cookie.remove(key);
+
+    return enabled;
+  };
+
+  // Get the cookie value by the key.
+  Cookie.get = function(key, raw) {
+    if (typeof key !== 'string' || !key) return null;
+
+    key = '(?:^|; )' + escapeRe(key) + '(?:=([^;]*?))?(?:;|$)';
+
+    var reKey = new RegExp(key);
+    var res = reKey.exec(document.cookie);
+
+    return res !== null ? (raw ? res[1] : decodeURIComponent(res[1])) : null;
+  };
+
+  // Get the cookie's value without decoding.
+  Cookie.getRaw = function(key) {
+    return Cookie.get(key, true);
+  };
+
+  // Set a cookie.
+  Cookie.set = function(key, value, raw, opts) {
+    if (raw !== true) {
+      opts = raw;
+      raw = false;
+    }
+    opts = opts ? convert(opts) : convert({});
+    var cookie = key + '=' + (raw ? value : encodeURIComponent(value)) + opts;
+    document.cookie = cookie;
+  };
+
+  // Set a cookie without encoding the value.
+  Cookie.setRaw = function(key, value, opts) {
+    Cookie.set(key, value, true, opts);
+  };
+
+  // Remove a cookie by the specified key.
+  Cookie.remove = function(key) {
+    Cookie.set(key, 'a', { expires: new Date() });
+  };
+
+  // Helper function
+  // ---------------
+
+  // Escape special characters.
+  function escapeRe(str) {
+    return str.replace(/[.*+?^$|[\](){}\\-]/g, '\\$&');
+  }
+
+  // Convert an object to a cookie option string.
+  function convert(opts) {
+    var res = '';
+
+    for (var p in opts) {
+      if (opts.hasOwnProperty(p)) {
+
+        if (p === 'expires') {
+          var expires = opts[p];
+          if (typeof expires !== 'object') {
+            expires += typeof expires === 'number' ? 'D' : '';
+            expires = computeExpires(expires);
+          }
+          opts[p] = expires.toUTCString();
+        }
+
+        if (p === 'secure') {
+          if (opts[p]) {
+            res += ';' + p;
+          }
+
+          continue;
+        }
+
+        res += ';' + p + '=' + opts[p];
+      }
+    }
+
+    if (!opts.hasOwnProperty('path')) {
+      res += ';path=/';
+    }
+
+    return res;
+  }
+
+  // Return a future date by the given string.
+  function computeExpires(str) {
+    var expires = new Date();
+    var lastCh = str.charAt(str.length - 1);
+    var value = parseInt(str, 10);
+
+    switch (lastCh) {
+      case 'Y': expires.setFullYear(expires.getFullYear() + value); break;
+      case 'M': expires.setMonth(expires.getMonth() + value); break;
+      case 'D': expires.setDate(expires.getDate() + value); break;
+      case 'h': expires.setHours(expires.getHours() + value); break;
+      case 'm': expires.setMinutes(expires.getMinutes() + value); break;
+      case 's': expires.setSeconds(expires.getSeconds() + value); break;
+      default: expires = new Date(str);
+    }
+
+    return expires;
+  }
+
+  return Cookie;
+
+}));
+
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function () {
+    Number.isInteger = Number.isInteger || function (value) {
+        return typeof value === 'number' &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+    };
+    var Cookie = __webpack_require__(201);
+
+    var VueCookie = {
+
+        install: function (Vue) {
+            Vue.prototype.$cookie = this;
+            Vue.cookie = this;
+        },
+        set: function (name, value, daysOrOptions) {
+            var opts = daysOrOptions;
+            if(Number.isInteger(daysOrOptions)) {
+                opts = {expires: daysOrOptions};
+            }
+            return Cookie.set(name, value, opts);
+        },
+
+        get: function (name) {
+            return Cookie.get(name);
+        },
+
+        delete: function (name, options) {
+            var opts = {expires: -1};
+            if(options !== undefined) {
+                opts = Object.assign(options, opts);
+            }
+            this.set(name, '', opts);
+        }
+    };
+
+    if (true) {
+        module.exports = VueCookie;
+    } else if (typeof define == "function" && define.amd) {
+        define([], function(){ return VueCookie; })
+    } else if (window.Vue) {
+        window.VueCookie = VueCookie;
+        Vue.use(VueCookie);
+    }
+
+})();
 
 
 /***/ })
