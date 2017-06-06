@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\UserRegistrationThroughAPIRequest;
 use App\Http\Requests\webAppLoginRequest;
 use App\Mail\UserEmailValidation;
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
+
+    use AuthenticatesUsers;
 
     //
     public function verifyEmail(Request $request)
@@ -47,7 +49,6 @@ class UserController extends Controller
             'is_coach'=>$data['is_coach'],
             'password' => bcrypt($data['password']),
             'zip'=>$data['zip'],
-            'is_coach'=>$data['is_coach'],
             'email_token' =>$token
         );
         //
@@ -151,25 +152,35 @@ class UserController extends Controller
         $token = $user->createToken('register')->accessToken;
         return response()->json(['access_token'=>$token]);
     }
-    public function loginToWebApp(webAppLoginRequest $request)
+    //Users and overrrides the login method form AuthenticatesUsers
+    public function login(Request $request)
     {
-        $user = User::find(1);
-        $token = $user->createToken('webAppAccess')->accessToken;
-     //   return array('token'=> $token);
+        $this->validateLogin($request);
 
-        $response = new \Illuminate\Http\Response(array('token'=> $token));
-        $response->withCookie(cookie('laravel_token', $token, 45000));
-        return $response;
-       //return  $request;
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    //overrides the AuthenticatesUsers class
+    protected function authenticated(Request $request, $user)
+    {
+        $token = $user->createToken('webAppAccess')->accessToken;
+        return response()->json([
+            'token' => $token,
+            'user'=>$user
+        ]);
     }
 
     public function getCurrentUserData()
     {
         return  auth()->user();
     }
-    public function dumpAll()
+
+    protected function sendLoginResponse(Request $request)
     {
-        echo '<pre>';
-        var_dump($_COOKIE);
+        return $this->authenticated($request, $this->guard()->user())
+            ?: redirect()->intended($this->redirectPath());
     }
 }

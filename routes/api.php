@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 Route::post('/webAppLogin','UserController@loginToWebApp');//done
 Route::post('/register','UserController@generateUserViaAPI');//done
 Route::get('/user','UserController@getCurrentUserData')->middleware('auth:api');//
-Route::post('/user/login','UserController@loginToWebApp');//
+Route::post('/user/login','UserController@login');//
 
 /*---SKATING ACHIEVEMENT ROUTES ---*/
 Route::get('achievements','AchievementController@index');

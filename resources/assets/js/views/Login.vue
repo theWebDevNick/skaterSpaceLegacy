@@ -56,19 +56,34 @@
    },
         methods:{
             login(){
-                this.$root.$data.auth.makeLoginRequest('foo@bao.com','bar');
-
-            },
-            tryUserData(token){
-                let config = {
-                    headers: {'Authorization': 'Bearer '+token}
-                };
-                axios.get('/api/user',config)
+                axios.post('/api/user/login',
+                    {email:this.email,password:this.password})
                     .then(response => {
-                        console.log('Success');
-                        console.log(response.data);
-                        this.$root.$data.auth.putUserInLocalStorage(response.data);
+                        if (response.data.token)
+                        {
+                            this.$root.$data.auth.setAfterLogin(response.data.token, response.data.user);
+                            if(this.$route.query.redirect)
+                            {
+                                this.$root.$router.push({path:this.$route.query.redirect,params:null});
+                            }
+                            else
+                            {
+                                this.$root.$router.push({path:'/',params:null});
+                            }
+
+                        }
+                        else
+                        {
+
+                        }
+
+                    })
+                    .catch(error=> {
+                        console.log('Login Failed');
+                        console.log(error);
+                        this.password=null;
                     });
+
             }
         }
 

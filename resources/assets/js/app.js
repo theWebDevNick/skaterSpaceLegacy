@@ -20,8 +20,8 @@ new Vue({
     router,
     data:state,
     created: function(){
-        let a = this.$root.$data.auth.isLoggedIn();
-        console.log(a);
+       //let a = this.$root.$data.auth.isLoggedIn();
+
     }
 });
 

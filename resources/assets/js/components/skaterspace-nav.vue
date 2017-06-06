@@ -7,7 +7,7 @@
                 <div class="logo-wrapper sn-ad-avatar-wrapper">
                     <img src="/img/navLogoLG.png" class="img-fluid rounded-circle">
                     <div class="rgba-stylish-strong">
-                        <p class="user white-text">Nick<br>nickccoates@gmail.com</p>
+                        <p class="user white-text"> Hi<br>nickccoates@gmail.com</p>
                     </div>
                 </div>
             </li>

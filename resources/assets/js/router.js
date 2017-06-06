@@ -6,7 +6,8 @@ let routes =
         {
             path: '/',
             beforeEnter:requireAuth,
-            component: require('./views/Dashboard.vue')
+            component: require('./views/Dashboard.vue'),
+            name:"home"
         },
         {
             path: '/login',
